@@ -29,6 +29,9 @@ layout_mode = 2
 [node name="FightLabel" type="Label" parent="UI/TopBar" unique_id=829767931]
 layout_mode = 2
 
+[node name="TokenLabel" type="Label" parent="UI/TopBar" unique_id=2111883852]
+layout_mode = 2
+
 [node name="EnemyArea" type="HBoxContainer" parent="UI" unique_id=1665238640]
 layout_mode = 2
 

@@ -20,6 +20,8 @@ var enemy_max_hp: int = 0
 @onready var hp_label = $UI/TopBar/HPLabel
 @onready var fight_label = $UI/TopBar/FightLabel
 
+@onready var token_label = $UI/TopBar/TokenLabel
+
 @onready var enemy_hp_label = $UI/EnemyArea/EnemyHPLabel
 
 @onready var info_label = $UI/InfoLabel
@@ -168,6 +170,7 @@ func execute_attack():
 	if enemy_hp <= 0:
 		RunData.battles_won += 1
 		RunData.fight_index += 1
+		RunData.tokens += 5
 		get_tree().change_scene_to_file("res://Upgrade.tscn")
 		return
 
@@ -180,6 +183,7 @@ func execute_attack():
 	if enemy_hp <= 0:
 		RunData.battles_won += 1
 		RunData.fight_index += 1
+		RunData.tokens += 5
 		get_tree().change_scene_to_file("res://Upgrade.tscn")
 	if enemy_hp > 0:
 		enemy_turn()
@@ -225,6 +229,7 @@ func update_ui():
 	hp_label.text = "HP: " + str(RunData.player_hp)
 	fight_label.text = "Fight: " + str(RunData.fight_index)
 	enemy_hp_label.text = "Enemy HP: " + str(enemy_hp)
+	token_label.text = "Tokens: " + str(RunData.tokens)
 
 	for i in hero_buttons.size():
 		if i < hand.size():
