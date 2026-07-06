@@ -59,7 +59,11 @@ var tokens := 0
 # ----------------------------
 
 func start_new_run():
-
+	player_hp = 20
+	player_max_hp = 20
+	battles_won = 0
+	fight_index = 0 
+	current_fight = 1
 	player_hp = player_max_hp
 
 	battles_won = 0
@@ -82,7 +86,4 @@ func start_new_run():
 		"Hero10"
 	]
 func reset():
-	player_hp = 20
-	player_max_hp = 20
-	fight_index = 0 
-	current_fight = 1
+	player_hp = player_max_hp
