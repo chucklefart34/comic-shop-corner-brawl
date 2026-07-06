@@ -5,13 +5,14 @@ extends Control
 @onready var collection_button = $CollectionButton
 
 func _ready():
+	SaveManager.load_game()
 	play_button.pressed.connect(func():
-		get_tree().change_scene_to_file("res://Game.tscn")
+		get_tree().change_scene_to_file("res://scenes/Game.tscn")
 		
 )
 	store_button.pressed.connect(func():
-		get_tree().change_scene_to_file("res://Store.tscn")
+		get_tree().change_scene_to_file("res://scenes/Store.tscn")
 )
 	collection_button.pressed.connect(func():
-		get_tree().change_scene_to_file("res://Collection.tscn")
+		get_tree().change_scene_to_file("res://scenes/Collection.tscn")
 )

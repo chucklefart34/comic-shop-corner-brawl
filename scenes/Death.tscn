@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://64er7nnjwiay"]
+
+[ext_resource type="Script" uid="uid://deqjfee5dpv87" path="res://scripts/death.gd" id="1_lgbjt"]
+[ext_resource type="Texture2D" uid="uid://f3ph3t4nnki0" path="res://picstures/death.png" id="2_g812g"]
+
+[node name="Death" type="Control" unique_id=1997633047]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lgbjt")
+
+[node name="DeathLabel" type="Label" parent="." unique_id=222112606]
+layout_mode = 0
+offset_left = 625.93
+offset_top = 454.795
+offset_right = 728.92993
+offset_bottom = 521.79517
+
+[node name="StatsLabel" type="Label" parent="." unique_id=1289446119]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 453.77
+offset_right = 608.0
+offset_bottom = 557.76965
+
+[node name="ReturnButton" type="Button" parent="." unique_id=691047364]
+layout_mode = 0
+offset_left = 490.46
+offset_top = 422.095
+offset_right = 636.4601
+offset_bottom = 453.095
+text = "okay thanks dude"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1454463910]
+z_index = -100
+position = Vector2(577, 323.5)
+scale = Vector2(0.59791666, 0.59537035)
+texture = ExtResource("2_g812g")

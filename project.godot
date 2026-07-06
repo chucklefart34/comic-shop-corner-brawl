@@ -13,12 +13,13 @@ config_version=5
 config/name="comic shop corner brawl"
 run/main_scene="uid://bjnd32yxheatb"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://picstures/icon.svg"
 
 [autoload]
 
 HeroDataBase="*uid://71px2f1qcjhk"
 RunData="*uid://bmymas1qclryn"
+SaveManager="*uid://ckx4tpsrurw5a"
 
 [display]
 

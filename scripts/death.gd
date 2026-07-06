@@ -8,5 +8,5 @@ func _ready():
 
 	return_button.pressed.connect(func():
 		RunData.reset()
-		get_tree().change_scene_to_file("res://Title.tscn")
+		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 )

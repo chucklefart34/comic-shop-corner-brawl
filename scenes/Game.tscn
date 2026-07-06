@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://7hq3pconp5vj"]
 
-[ext_resource type="Script" uid="uid://7lveii8mojpv" path="res://Game.gd" id="1_wbfu4"]
+[ext_resource type="Script" uid="uid://7lveii8mojpv" path="res://scripts/Game.gd" id="1_wbfu4"]
+[ext_resource type="Texture2D" uid="uid://bvaymbe53g3ln" path="res://picstures/playing.png" id="2_xkndl"]
 
 [node name="Game" type="Control" unique_id=1146735765]
+modulate = Color(0.88761085, 0.8952423, 0.8949116, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +27,7 @@ layout_mode = 2
 
 [node name="HPLabel" type="Label" parent="UI/TopBar" unique_id=911848411]
 layout_mode = 2
+text = "HP:"
 
 [node name="FightLabel" type="Label" parent="UI/TopBar" unique_id=829767931]
 layout_mode = 2
@@ -50,6 +53,7 @@ text = " "
 [node name="EnemyHPLabel" type="Label" parent="UI/EnemyArea" unique_id=1177400246]
 layout_mode = 2
 text = "Enemy HP:"
+horizontal_alignment = 2
 
 [node name="InfoLabel" type="Label" parent="UI" unique_id=592066926]
 layout_mode = 2
@@ -85,6 +89,13 @@ text = "Attack 2!"
 [node name="EndTurnButton" type="Button" parent="UI" unique_id=492956389]
 layout_mode = 2
 offset_transform_enabled = true
-offset_transform_position = Vector2(0, 300)
-text = "select attack!"
+offset_transform_visual_only = false
+text = "End Turn"
 icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759838696]
+z_index = -1000
+position = Vector2(574, 322)
+scale = Vector2(0.6, 0.59999996)
+texture = ExtResource("2_xkndl")

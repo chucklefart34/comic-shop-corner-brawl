@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjnd32yxheatb"]
 
-[ext_resource type="Script" uid="uid://c8mdnb7kale0g" path="res://title.gd" id="1_c0dwi"]
+[ext_resource type="Script" uid="uid://c8mdnb7kale0g" path="res://scripts/title.gd" id="1_c0dwi"]
+[ext_resource type="Texture2D" uid="uid://b0awh7tfcchsi" path="res://picstures/title.png" id="2_ax32a"]
 
 [node name="Title" type="Control" unique_id=2103769830]
 layout_mode = 3
@@ -21,24 +22,30 @@ text = "Comic Shop Corner Brawl"
 
 [node name="PlayButton" type="Button" parent="." unique_id=1646482762]
 layout_mode = 0
-offset_left = 555.0
-offset_top = 304.0
-offset_right = 596.0
-offset_bottom = 335.0
+offset_left = 556.035
+offset_top = 376.22
+offset_right = 597.035
+offset_bottom = 407.22
 text = "Play"
 
 [node name="CollectionButton" type="Button" parent="." unique_id=323997555]
 layout_mode = 0
 offset_left = 537.0
-offset_top = 357.0
+offset_top = 430.455
 offset_right = 620.0
-offset_bottom = 388.0
+offset_bottom = 461.455
 text = "collection"
 
 [node name="StoreButton" type="Button" parent="." unique_id=888331312]
 layout_mode = 0
 offset_left = 537.0
-offset_top = 410.0
+offset_top = 480.39
 offset_right = 620.0
-offset_bottom = 441.0
+offset_bottom = 511.39005
 text = "Store"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239574583]
+z_index = -100
+position = Vector2(578, 324.00003)
+scale = Vector2(0.5973959, 0.5935185)
+texture = ExtResource("2_ax32a")

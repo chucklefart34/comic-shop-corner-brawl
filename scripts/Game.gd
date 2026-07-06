@@ -170,8 +170,8 @@ func execute_attack():
 	if enemy_hp <= 0:
 		RunData.battles_won += 1
 		RunData.fight_index += 1
-		RunData.tokens += 5
-		get_tree().change_scene_to_file("res://Upgrade.tscn")
+		RunData.tokens += 1
+		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
 
 	# enemy turn
@@ -183,8 +183,8 @@ func execute_attack():
 	if enemy_hp <= 0:
 		RunData.battles_won += 1
 		RunData.fight_index += 1
-		RunData.tokens += 5
-		get_tree().change_scene_to_file("res://Upgrade.tscn")
+		RunData.tokens += 1
+		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 	if enemy_hp > 0:
 		enemy_turn()
 	
@@ -196,7 +196,7 @@ func win_fight():
 	RunData.battles_won += 1
 	RunData.fight_index += 1
 
-	get_tree().change_scene_to_file("res://Upgrade.tscn")
+	get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 
 
 func end_turn():
@@ -206,7 +206,7 @@ func end_turn():
 # dying shit
 	if RunData.player_hp <= 0:
 		RunData.reset()
-		get_tree().change_scene_to_file("res://Death.tscn")
+		get_tree().change_scene_to_file("res://scenes/Death.tscn")
 		return
 
 	update_ui()
@@ -246,7 +246,7 @@ func enemy_turn():
 
 	if RunData.player_hp <= 0:
 		RunData.reset()
-		get_tree().change_scene_to_file("res://Death.tscn")
+		get_tree().change_scene_to_file("res://scenes/Death.tscn")
 		return
 
 	start_player_turn()
