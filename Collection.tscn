@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://r7j4elkanpgx"]
+
+[ext_resource type="Script" uid="uid://d1olioilrg8bx" path="res://collection.gd" id="1_i286q"]
+
+[node name="Collection" type="Control" unique_id=1388087195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i286q")
+
+[node name="ReturnButton" type="Button" parent="." unique_id=551151019]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 589.0
+offset_right = 92.0
+offset_bottom = 620.0
+text = "Return"

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ywe2bq01bxmc"]
+
+[ext_resource type="Script" uid="uid://ctslsds0q782s" path="res://Store.gd" id="1_ptagb"]
+
+[node name="Store" type="Control" unique_id=1795972341]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptagb")
+
+[node name="ReturnButton" type="Button" parent="." unique_id=1286176144]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 596.0
+offset_right = 91.0
+offset_bottom = 627.0
+text = "Return"

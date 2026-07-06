@@ -13,12 +13,32 @@ script = ExtResource("1_c0dwi")
 
 [node name="TitleLabel" type="Label" parent="." unique_id=518155653]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 475.0
+offset_top = 208.0
+offset_right = 672.0
+offset_bottom = 231.0
 text = "Comic Shop Corner Brawl"
 
 [node name="PlayButton" type="Button" parent="." unique_id=1646482762]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 555.0
+offset_top = 304.0
+offset_right = 596.0
+offset_bottom = 335.0
 text = "Play"
+
+[node name="CollectionButton" type="Button" parent="." unique_id=323997555]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 357.0
+offset_right = 620.0
+offset_bottom = 388.0
+text = "collection"
+
+[node name="StoreButton" type="Button" parent="." unique_id=888331312]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 410.0
+offset_right = 620.0
+offset_bottom = 441.0
+text = "Store"

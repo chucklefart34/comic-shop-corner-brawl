@@ -13,8 +13,11 @@ script = ExtResource("1_g2cgu")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1516706528]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 477.0
+offset_top = 270.425
+offset_right = 548.445
+offset_bottom = 356.42502
+alignment = 1
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=681388308]
 layout_mode = 2
