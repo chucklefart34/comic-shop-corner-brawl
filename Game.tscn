@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://7hq3pconp5vj"]
+
+[ext_resource type="Script" uid="uid://7lveii8mojpv" path="res://Game.gd" id="1_wbfu4"]
+
+[node name="Game" type="Control" unique_id=1146735765]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wbfu4")
+
+[node name="UI" type="VBoxContainer" parent="." unique_id=788553722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+
+[node name="TopBar" type="HBoxContainer" parent="UI" unique_id=243876078]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="UI/TopBar" unique_id=911848411]
+layout_mode = 2
+
+[node name="FightLabel" type="Label" parent="UI/TopBar" unique_id=829767931]
+layout_mode = 2
+
+[node name="EnemyArea" type="HBoxContainer" parent="UI" unique_id=1665238640]
+layout_mode = 2
+
+[node name="EnemyButton1" type="Button" parent="UI/EnemyArea" unique_id=2062570442]
+layout_mode = 2
+
+[node name="EnemyButton2" type="Button" parent="UI/EnemyArea" unique_id=1037159161]
+visible = false
+layout_mode = 2
+
+[node name="EnemyButton3" type="Button" parent="UI/EnemyArea" unique_id=675361070]
+visible = false
+layout_mode = 2
+text = " "
+
+[node name="EnemyHPLabel" type="Label" parent="UI/EnemyArea" unique_id=1177400246]
+layout_mode = 2
+text = "Enemy HP:"
+
+[node name="InfoLabel" type="Label" parent="UI" unique_id=592066926]
+layout_mode = 2
+
+[node name="HeroArea" type="HBoxContainer" parent="UI" unique_id=1625025132]
+layout_mode = 2
+alignment = 1
+
+[node name="HeroButton1" type="Button" parent="UI/HeroArea" unique_id=446877276]
+layout_mode = 2
+icon_alignment = 1
+
+[node name="HeroButton2" type="Button" parent="UI/HeroArea" unique_id=1664755687]
+layout_mode = 2
+icon_alignment = 1
+
+[node name="HeroButton3" type="Button" parent="UI/HeroArea" unique_id=1990791148]
+layout_mode = 2
+text = " "
+icon_alignment = 1
+
+[node name="AttackArea" type="HBoxContainer" parent="UI" unique_id=1476886037]
+layout_mode = 2
+
+[node name="AttackAButton" type="Button" parent="UI/AttackArea" unique_id=860916527]
+layout_mode = 2
+text = "Attack 1"
+
+[node name="AttackBButton" type="Button" parent="UI/AttackArea" unique_id=325381011]
+layout_mode = 2
+text = "Attack 2!"
+
+[node name="EndTurnButton" type="Button" parent="UI" unique_id=492956389]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 300)
+text = "select attack!"
+icon_alignment = 1

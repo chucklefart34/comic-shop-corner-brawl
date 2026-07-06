@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://64er7nnjwiay"]
+
+[ext_resource type="Script" uid="uid://deqjfee5dpv87" path="res://death.gd" id="1_0gyil"]
+
+[node name="Death" type="Control" unique_id=1997633047]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0gyil")
+
+[node name="DeathLabel" type="Label" parent="." unique_id=222112606]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="StatsLabel" type="Label" parent="." unique_id=1289446119]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ReturnButton" type="Button" parent="." unique_id=691047364]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Return!"

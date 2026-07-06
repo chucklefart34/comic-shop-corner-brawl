@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bjnd32yxheatb"]
+
+[ext_resource type="Script" uid="uid://c8mdnb7kale0g" path="res://title.gd" id="1_c0dwi"]
+
+[node name="Title" type="Control" unique_id=2103769830]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0dwi")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=518155653]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Comic Shop Corner Brawl"
+
+[node name="PlayButton" type="Button" parent="." unique_id=1646482762]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
