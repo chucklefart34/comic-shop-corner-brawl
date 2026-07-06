@@ -199,6 +199,7 @@ func end_turn():
 	var dmg = randi_range(2, 6)
 	RunData.player_hp -= dmg
 
+# dying shit
 	if RunData.player_hp <= 0:
 		RunData.reset()
 		get_tree().change_scene_to_file("res://Death.tscn")
