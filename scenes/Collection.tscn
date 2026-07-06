@@ -38,10 +38,10 @@ texture = ExtResource("2_r1s44")
 
 [node name="DetailPanel" type="Panel" parent="." unique_id=879830017]
 layout_mode = 0
-offset_left = 265.0
-offset_top = 7.0
-offset_right = 714.0
-offset_bottom = 644.0
+offset_left = 98.0
+offset_top = 8.0
+offset_right = 547.0
+offset_bottom = 645.0
 
 [node name="NameLabel" type="Label" parent="DetailPanel" unique_id=1583011055]
 layout_mode = 0
@@ -59,10 +59,18 @@ offset_right = 52.0
 offset_bottom = 53.0
 text = "Count:"
 
-[node name="BackButton" type="Button" parent="." unique_id=158125520]
+[node name="DeckButton" type="Button" parent="DetailPanel" unique_id=1408525936]
 layout_mode = 0
-offset_left = 1091.0
-offset_top = 292.0
-offset_right = 1136.0
-offset_bottom = 323.0
+offset_left = 918.0
+offset_top = 284.0
+offset_right = 1018.0
+offset_bottom = 315.0
+text = "Add to deck"
+
+[node name="BackButton" type="Button" parent="DetailPanel" unique_id=158125520]
+layout_mode = 0
+offset_left = 859.0
+offset_top = 285.0
+offset_right = 904.0
+offset_bottom = 316.0
 text = "Hide"

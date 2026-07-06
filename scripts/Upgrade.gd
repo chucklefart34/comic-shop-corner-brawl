@@ -58,4 +58,4 @@ func pick_upgrade(index: int):
 
 	await get_tree().create_timer(0.8).timeout
 
-	get_tree().change_scene_to_file("res://Game.tscn")
+	get_tree().change_scene_to_file("res://scenes/Game.tscn")
