@@ -47,3 +47,11 @@ z_index = -1000
 position = Vector2(576, 327)
 scale = Vector2(0.60260415, 0.61296296)
 texture = ExtResource("2_lw67d")
+
+[node name="CurrencyLabel" type="Label" parent="." unique_id=643748518]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 201.0
+offset_bottom = 128.0
+text = "Tokens: "

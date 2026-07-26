@@ -88,6 +88,7 @@ func start_new_run():
 func reset():
 	player_hp = 20
 	player_max_hp = 20
+	tokens = 0
 	fight_index = 0 
 	current_fight = 1
 	player_hp = player_max_hp

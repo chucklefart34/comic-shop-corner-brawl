@@ -39,3 +39,10 @@ z_index = -100
 position = Vector2(577, 323.5)
 scale = Vector2(0.59791666, 0.59537035)
 texture = ExtResource("2_g812g")
+
+[node name="RunStatsLabel" type="Label" parent="." unique_id=510265716]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 493.0
+offset_right = 669.0
+offset_bottom = 604.0

@@ -171,6 +171,7 @@ func execute_attack():
 		RunData.battles_won += 1
 		RunData.fight_index += 1
 		RunData.tokens += 1
+		SaveManager.add_currency(1)
 		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
 

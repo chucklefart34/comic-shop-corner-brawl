@@ -6,6 +6,8 @@ extends Control
 @onready var count_label = $DetailPanel/CountLabel
 @onready var deck_button = $DetailPanel/DeckButton
 @onready var return_button = $ReturnButton
+@onready var back_button = $DetailPanel/BackButton
+@onready var text_label = $Textlabel 
 
 var selected_hero = ""
 var hero_counts = {}
@@ -85,7 +87,7 @@ func _on_deck_button_pressed():
 		SaveManager.remove_from_deck(selected_hero)
 	else:
 		if !SaveManager.add_to_deck(selected_hero):
-			print("Deck is full!")
+			text_label.text = ("Deck is full!")
 			return
 
 	show_hero(selected_hero)

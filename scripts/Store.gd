@@ -3,16 +3,25 @@ extends Control
 @onready var return_button = $ReturnButton
 @onready var buy_pack_button = $BuyPackButton
 @onready var hero_name_label = $HeroNameLabel 
+@onready var currency_label = $CurrencyLabel
 
 func _ready():
 	buy_pack_button.pressed.connect(_on_buy_pack_button_pressed)
-
+	update_currency_label()
+	
 	return_button.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
+		update_currency_label()
 	)
 
 
+func update_currency_label():
+	currency_label.text = "Tokens: " + str(SaveManager.data["currency"])
+
 func _on_buy_pack_button_pressed():
+	if not SaveManager.spend_currency(1):
+		hero_name_label.text = ("Not enough tokens!")
+		return
 	var result = open_booster()
 
 	if result == null:
@@ -24,10 +33,7 @@ func _on_buy_pack_button_pressed():
 	print("You got: ", hero["display_name"])
 	hero_name_label.text = "You got: " + hero["display_name"]
 	SaveManager.add_hero(hero_id)
-
-# -------------------------
-# PACK SYSTEM
-# -------------------------
+	update_currency_label()
 
 func open_booster():
 	var rarity = roll_rarity()
