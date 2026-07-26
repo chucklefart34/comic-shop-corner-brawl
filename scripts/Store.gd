@@ -2,7 +2,7 @@ extends Control
 
 @onready var return_button = $ReturnButton
 @onready var buy_pack_button = $BuyPackButton
-
+@onready var hero_name_label = $HeroNameLabel 
 
 func _ready():
 	buy_pack_button.pressed.connect(_on_buy_pack_button_pressed)
@@ -22,7 +22,7 @@ func _on_buy_pack_button_pressed():
 	var hero_id = result["id"]
 
 	print("You got: ", hero["display_name"])
-
+	hero_name_label.text = "You got: " + hero["display_name"]
 	SaveManager.add_hero(hero_id)
 
 # -------------------------

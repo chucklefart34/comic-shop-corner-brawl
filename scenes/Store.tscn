@@ -20,12 +20,6 @@ offset_right = 91.0
 offset_bottom = 627.0
 text = "Return"
 
-[node name="Sprite2D" type="Sprite2D" parent="ReturnButton" unique_id=891485548]
-z_index = -1000
-position = Vector2(547, -269)
-scale = Vector2(0.60260415, 0.61296296)
-texture = ExtResource("2_lw67d")
-
 [node name="BuyPackButton" type="Button" parent="." unique_id=2134804837]
 layout_mode = 0
 offset_left = 512.0
@@ -47,3 +41,9 @@ offset_left = 526.0
 offset_top = 180.0
 offset_right = 566.0
 offset_bottom = 203.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=891485548]
+z_index = -1000
+position = Vector2(576, 327)
+scale = Vector2(0.60260415, 0.61296296)
+texture = ExtResource("2_lw67d")
