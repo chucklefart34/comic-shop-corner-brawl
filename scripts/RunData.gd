@@ -12,18 +12,7 @@ var current_fight := 1
 
 
 
-var deck = [
-	"Hero1",
-	"Hero2",
-	"Hero3",
-	"Hero4",
-	"Hero5",
-	"Hero6",
-	"Hero7",
-	"Hero8",
-	"Hero9",
-	"Hero10"
-]
+var deck: Array
 
 
 var current_hand = []
@@ -37,6 +26,7 @@ var tokens := 0
 
 
 func start_new_run():
+	deck = SaveManager.data.deck
 	player_hp = 20
 	player_max_hp = 20
 	battles_won = 0
