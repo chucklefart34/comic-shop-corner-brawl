@@ -22,6 +22,7 @@ func _ready():
 	option1.pressed.connect(func(): pick_upgrade(0))
 	option2.pressed.connect(func(): pick_upgrade(1))
 	option3.pressed.connect(func(): pick_upgrade(2))
+	
 
 # PICK UPGRADE
 func pick_upgrade(index: int):
@@ -53,3 +54,12 @@ func pick_upgrade(index: int):
 	info_label.text = "Upgrade applied!"
 	await get_tree().create_timer(0.8).timeout
 	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)  # recurse into children too

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c8mdnb7kale0g" path="res://scripts/title.gd" id="1_c0dwi"]
 [ext_resource type="Texture2D" uid="uid://b0awh7tfcchsi" path="res://picstures/title.png" id="2_ax32a"]
+[ext_resource type="Script" uid="uid://d3ekf61pgoxxt" path="res://scripts/SoundManager.gd" id="3_aa56r"]
+[ext_resource type="AudioStream" uid="uid://cbxhb7o6q8gfr" path="res://Sounds/Hover.ogg" id="4_aa56r"]
+[ext_resource type="AudioStream" uid="uid://dh504xa52kms5" path="res://Sounds/click.ogg" id="5_mh4yb"]
 
 [node name="Title" type="Control" unique_id=2103769830]
 layout_mode = 3
@@ -49,3 +52,44 @@ z_index = -100
 position = Vector2(578, 324.00003)
 scale = Vector2(0.5973959, 0.5935185)
 texture = ExtResource("2_ax32a")
+
+[node name="HelpButton" type="Button" parent="." unique_id=781902161]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 526.0
+offset_right = 601.0
+offset_bottom = 557.0
+text = "Help"
+
+[node name="HelpPanel" type="Panel" parent="." unique_id=1309630667]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 307.0
+offset_right = 1150.0
+offset_bottom = 645.0
+
+[node name="CloseHelpButton" type="Button" parent="HelpPanel" unique_id=1493927087]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 306.0
+offset_right = 467.0
+offset_bottom = 337.0
+text = "Close"
+
+[node name="HelpText" type="Label" parent="HelpPanel" unique_id=701997194]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 462.0
+offset_bottom = 334.0
+
+[node name="SoundManager" type="Node2D" parent="." unique_id=671370362]
+script = ExtResource("3_aa56r")
+
+[node name="Music" type="AudioStreamPlayer" parent="SoundManager" unique_id=2043116249]
+
+[node name="Hover" type="AudioStreamPlayer" parent="SoundManager" unique_id=1274231214]
+stream = ExtResource("4_aa56r")
+
+[node name="Click" type="AudioStreamPlayer" parent="SoundManager" unique_id=459730217]
+stream = ExtResource("5_mh4yb")

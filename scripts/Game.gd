@@ -52,6 +52,9 @@ func _ready():
 		btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		btn.custom_minimum_size = Vector2(140, 180)
 
+
+	
+		
 	start_fight()
 
 	for i in hero_buttons.size():
@@ -67,6 +70,17 @@ func _ready():
 		execute_attack()
 	)
 	end_turn_btn.pressed.connect(end_turn)
+	
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			if not child.mouse_entered.is_connected(SoundManager.play_hover):
+				child.mouse_entered.connect(SoundManager.play_hover)
+			if not child.pressed.is_connected(SoundManager.play_click):
+				child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)
 
 # ----------------------------
 # FIGHT START

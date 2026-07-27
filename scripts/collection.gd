@@ -29,6 +29,16 @@ func _ready():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 	)
 	
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)  # recurse into children too
+	
+
 func _on_view_deck_button_pressed():
 	build_deck_panel()
 	deck_panel.visible = true
@@ -163,3 +173,5 @@ func _on_deck_button_pressed():
 
 	show_hero(selected_hero)
 	build_collection()
+	
+	

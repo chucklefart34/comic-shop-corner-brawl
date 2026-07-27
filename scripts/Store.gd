@@ -14,7 +14,15 @@ func _ready():
 		update_currency_label()
 	)
 
+	connect_button_sounds(self)
 
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)  # recurse into children too
+	
 func update_currency_label():
 	currency_label.text = "Tokens: " + str(SaveManager.data["currency"])
 
@@ -34,6 +42,8 @@ func _on_buy_pack_button_pressed():
 	hero_name_label.text = "You got: " + hero["display_name"]
 	SaveManager.add_hero(hero_id)
 	update_currency_label()
+
+	
 
 func open_booster():
 	var rarity = roll_rarity()
@@ -69,3 +79,5 @@ func roll_rarity():
 		return "Epic"
 	else:
 		return "Legendary"
+
+	
