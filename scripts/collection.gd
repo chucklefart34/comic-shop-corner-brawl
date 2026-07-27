@@ -141,6 +141,7 @@ func update_deck_button(hero_id):
 
 
 func _on_deck_button_pressed():
+	
 	if selected_hero == "":
 		return
 
@@ -150,6 +151,7 @@ func _on_deck_button_pressed():
 		if !SaveManager.add_to_deck(selected_hero):
 			announce_label.text = ("Deck is full!")
 			return
+	
 
 	show_hero(selected_hero)
 	build_collection()

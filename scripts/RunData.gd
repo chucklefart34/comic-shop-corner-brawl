@@ -26,7 +26,6 @@ var tokens := 0
 
 
 func start_new_run():
-	deck = SaveManager.data.deck
 	player_hp = 20
 	player_max_hp = 20
 	battles_won = 0

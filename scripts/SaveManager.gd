@@ -44,6 +44,7 @@ func load_game():
 		data["deck"] = []
 	if not data.has("currency"):
 		data["currency"] = 0
+	RunData.deck = data.deck
 	save_game()
  
 # -------------------------
