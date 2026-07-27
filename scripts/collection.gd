@@ -7,7 +7,11 @@ extends Control
 @onready var deck_button = $DetailPanel/DeckButton
 @onready var return_button = $ReturnButton
 @onready var back_button = $DetailPanel/BackButton
-@onready var text_label = $Textlabel 
+@onready var announce_label = $DetailPanel/AnnounceLabel 
+@onready var view_deck_button = $ViewDeckButton
+@onready var deck_panel = $DeckPanel
+@onready var deck_grid = $DeckPanel/ScrollContainer/DeckGrid
+@onready var close_deck_button = $DeckPanel/CloseDeckButton
 
 var selected_hero = ""
 var hero_counts = {}
@@ -15,14 +19,51 @@ var hero_counts = {}
 
 func _ready():
 	detail_panel.visible = false
+	deck_panel.visible = false
 	build_collection()
-
 	deck_button.pressed.connect(_on_deck_button_pressed)
-
+	back_button.pressed.connect(_on_back_button_pressed)
+	view_deck_button.pressed.connect(_on_view_deck_button_pressed)
+	close_deck_button.pressed.connect(_on_close_deck_button_pressed)
 	return_button.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 	)
+	
+func _on_view_deck_button_pressed():
+	build_deck_panel()
+	deck_panel.visible = true
 
+func _on_close_deck_button_pressed():
+	deck_panel.visible = false
+
+func build_deck_panel():
+	for child in deck_grid.get_children():
+		child.queue_free()
+	for hero_id in SaveManager.data["deck"]:
+		var card = create_deck_card(hero_id)
+		deck_grid.add_child(card)
+
+func create_deck_card(hero_id):
+	var container = VBoxContainer.new()
+	var hero = HeroDataBase.heroes[hero_id]
+
+	var portrait = TextureRect.new()
+	portrait.texture = hero["portrait"]
+	portrait.custom_minimum_size = Vector2(140, 140)
+	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+
+	var label = Label.new()
+	label.text = hero["display_name"]
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+
+	container.add_child(portrait)
+	container.add_child(label)
+	return container
+
+func _on_back_button_pressed():
+	detail_panel.visible = false
+	selected_hero = ""
 
 func build_collection():
 	hero_counts.clear()
@@ -46,17 +87,37 @@ func build_collection():
 
 func create_card(hero_id):
 	var btn = Button.new()
-
 	var hero = HeroDataBase.heroes[hero_id]
 	var count = hero_counts[hero_id]
-
-	btn.text = hero["display_name"] + "\nx" + str(count)
 	btn.custom_minimum_size = Vector2(140, 180)
+
+	var vbox = VBoxContainer.new()
+	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var portrait_node
+	if hero.get("portrait") != null:
+		portrait_node = TextureRect.new()
+		portrait_node.texture = hero["portrait"]
+		portrait_node.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		portrait_node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	else:
+		portrait_node = ColorRect.new()
+		portrait_node.color = hero.get("color", Color(0.5, 0.5, 0.5))
+	portrait_node.custom_minimum_size = Vector2(140, 140)
+	portrait_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var label = Label.new()
+	label.text = hero["display_name"] + "\nx" + str(count)
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	vbox.add_child(portrait_node)
+	vbox.add_child(label)
+	btn.add_child(vbox)
 
 	btn.pressed.connect(func():
 		show_hero(hero_id)
 	)
-
 	return btn
 
 
@@ -87,7 +148,7 @@ func _on_deck_button_pressed():
 		SaveManager.remove_from_deck(selected_hero)
 	else:
 		if !SaveManager.add_to_deck(selected_hero):
-			text_label.text = ("Deck is full!")
+			announce_label.text = ("Deck is full!")
 			return
 
 	show_hero(selected_hero)

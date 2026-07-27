@@ -14,7 +14,8 @@ script = ExtResource("1_u5xa6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=386809299]
 layout_mode = 0
-offset_top = 277.0
+offset_left = 1.0
+offset_top = 284.0
 offset_right = 1150.0
 offset_bottom = 646.0
 
@@ -32,16 +33,16 @@ text = "Return"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=273307062]
 z_index = -1000
-position = Vector2(576, 383.00003)
+position = Vector2(577, 324.00003)
 scale = Vector2(0.5989583, 0.5972222)
 texture = ExtResource("2_r1s44")
 
 [node name="DetailPanel" type="Panel" parent="." unique_id=879830017]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 8.0
-offset_right = 547.0
-offset_bottom = 645.0
+offset_left = 104.0
+offset_top = 20.0
+offset_right = 553.0
+offset_bottom = 657.0
 
 [node name="NameLabel" type="Label" parent="DetailPanel" unique_id=1583011055]
 layout_mode = 0
@@ -61,21 +62,56 @@ text = "Count:"
 
 [node name="DeckButton" type="Button" parent="DetailPanel" unique_id=1408525936]
 layout_mode = 0
-offset_left = 918.0
-offset_top = 284.0
-offset_right = 1018.0
-offset_bottom = 315.0
+offset_left = 752.0
+offset_top = 218.0
+offset_right = 852.0
+offset_bottom = 249.0
 text = "Add to deck"
 
 [node name="BackButton" type="Button" parent="DetailPanel" unique_id=158125520]
 layout_mode = 0
-offset_left = 859.0
-offset_top = 285.0
-offset_right = 904.0
-offset_bottom = 316.0
+offset_left = 645.0
+offset_top = 220.0
+offset_right = 690.0
+offset_bottom = 251.0
 text = "Hide"
 
-[node name="TextLabel" type="Label" parent="." unique_id=1908805144]
+[node name="AnnounceLabel" type="Label" parent="DetailPanel" unique_id=1908805144]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -104.0
+offset_top = -20.0
+offset_right = -64.0
+offset_bottom = 3.0
+
+[node name="ViewDeckButton" type="Button" parent="." unique_id=1330513295]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 237.0
+offset_right = 1092.0
+offset_bottom = 268.0
+text = "View Deck"
+
+[node name="DeckPanel" type="Panel" parent="." unique_id=623704733]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 6.0
+offset_right = 1150.0
+offset_bottom = 228.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckPanel" unique_id=2065607704]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 701.0
+offset_bottom = 223.0
+
+[node name="DeckGrid" type="GridContainer" parent="DeckPanel/ScrollContainer" unique_id=1579773250]
+layout_mode = 2
+
+[node name="CloseDeckButton" type="Button" parent="DeckPanel" unique_id=1048577068]
+layout_mode = 0
+offset_left = -108.0
+offset_top = 177.0
+offset_right = -16.0
+offset_bottom = 208.0
+text = "Close Deck"

@@ -53,7 +53,7 @@ func reset_game():
 	data = {
 		"owned_heroes": [],
 		"deck": [],
-		"currency": [],
+		"currency": 0,
 	}
 	save_game()
  

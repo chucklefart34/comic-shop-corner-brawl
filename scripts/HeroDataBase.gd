@@ -92,5 +92,14 @@ var heroes = {
 		"attack_a": [3],
 		"attack_b": [3, 30],
 		"attack_bonus": 0
-	}
+	},
+	
 }
+
+func _ready():
+	for hero_id in heroes.keys():
+		var path = "res://Portraits/%s.png" % hero_id
+		if ResourceLoader.exists(path):
+			heroes[hero_id]["portrait"] = load(path)
+		else:
+			heroes[hero_id]["portrait"] = null

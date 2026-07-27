@@ -45,9 +45,14 @@ func _ready():
 
 	deck = RunData.deck.duplicate()
 	deck.shuffle()
-	
+
+	for btn in hero_buttons:
+		btn.expand_icon = true
+		btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+		btn.custom_minimum_size = Vector2(140, 180)
+
 	start_fight()
-	
 
 	for i in hero_buttons.size():
 		var idx = i
@@ -57,15 +62,11 @@ func _ready():
 		selected_attack = "a"
 		execute_attack()
 	)
-	
 	attack_b_btn.pressed.connect(func():
 		selected_attack = "b"
 		execute_attack()
 	)
 	end_turn_btn.pressed.connect(end_turn)
-
-	start_fight()
-
 
 # ----------------------------
 # FIGHT START
@@ -179,16 +180,6 @@ func execute_attack():
 	player_can_act = false
 	await get_tree().create_timer(0.3).timeout
 	enemy_turn()
-
-	# WIN CHECK (ONLY ONCE, CLEANLY)
-	if enemy_hp <= 0:
-		RunData.battles_won += 1
-		RunData.fight_index += 1
-		RunData.tokens += 1
-		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
-	if enemy_hp > 0:
-		enemy_turn()
-	
 	
 # ----------------------------
 # WIN / LOSE
@@ -235,10 +226,12 @@ func update_ui():
 	for i in hero_buttons.size():
 		if i < hand.size():
 			var id = hand[i]
-			hero_buttons[i].text = HeroDataBase.heroes[id]["display_name"]
+			var hero = HeroDataBase.heroes[id]
+			hero_buttons[i].text = hero["display_name"]
+			hero_buttons[i].icon = hero.get("portrait")
 		else:
 			hero_buttons[i].text = "-"
-			
+			hero_buttons[i].icon = null
 func enemy_turn():
 	var dmg = randi_range(2, 6)
 	RunData.player_hp -= dmg
