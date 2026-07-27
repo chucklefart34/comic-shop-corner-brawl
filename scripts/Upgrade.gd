@@ -40,6 +40,7 @@ func pick_upgrade(index: int):
 					RunData.hero_upgrades[hero_id] = {}
 				RunData.hero_upgrades[hero_id]["attack_bonus"] = \
 					RunData.hero_upgrades[hero_id].get("attack_bonus", 0) + 1
+					
 		"remove_card":
 			if RunData.deck.size() > 0:
 				var idx = randi() % RunData.deck.size()

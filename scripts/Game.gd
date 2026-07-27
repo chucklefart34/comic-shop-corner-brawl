@@ -151,9 +151,12 @@ func execute_attack():
 
 	var bonus = 0
 
-	# Apply upgrade if it exists
+# Duplicate-based star bonus (persistent, from collection)
+	bonus += SaveManager.get_hero_attack_bonus(hero_id)
+
+# Run-based upgrade bonus (from Upgrade.tscn choices, if any)
 	if RunData.hero_upgrades.has(hero_id):
-		bonus = RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
+		bonus += RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
 
 	var dmg = base_damage + bonus
 
@@ -181,7 +184,7 @@ func execute_attack():
 
 	# enemy turn
 	player_can_act = false
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.6).timeout
 	enemy_turn()
 	
 # ----------------------------
@@ -230,7 +233,19 @@ func update_ui():
 		if i < hand.size():
 			var id = hand[i]
 			var hero = HeroDataBase.heroes[id]
-			hero_buttons[i].text = hero["display_name"]
+
+			var stars = SaveManager.get_hero_star_level(id)
+			var star_text = ""
+			if stars > 0:
+				star_text = "\n" + "★".repeat(stars)
+
+			var run_bonus_text = ""
+			if RunData.hero_upgrades.has(id):
+				var run_bonus = RunData.hero_upgrades[id].get("attack_bonus", 0)
+				if run_bonus > 0:
+					run_bonus_text = "  +" + str(run_bonus)
+
+			hero_buttons[i].text = hero["display_name"] + star_text + run_bonus_text
 			hero_buttons[i].icon = hero.get("portrait")
 		else:
 			hero_buttons[i].text = "-"

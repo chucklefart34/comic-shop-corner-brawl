@@ -91,6 +91,11 @@ func create_card(hero_id):
 	var count = hero_counts[hero_id]
 	btn.custom_minimum_size = Vector2(140, 180)
 
+	var stars = SaveManager.get_hero_star_level(hero_id)
+	var star_text = ""
+	if stars > 0:
+		star_text = "\n" + "★".repeat(stars)
+
 	var vbox = VBoxContainer.new()
 	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -107,7 +112,7 @@ func create_card(hero_id):
 	portrait_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var label = Label.new()
-	label.text = hero["display_name"] + "\nx" + str(count)
+	label.text = hero["display_name"] + "\nx" + str(count) + star_text
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -123,12 +128,15 @@ func create_card(hero_id):
 
 func show_hero(hero_id):
 	selected_hero = hero_id
-
 	var hero = HeroDataBase.heroes[hero_id]
 
 	detail_panel.visible = true
 	name_label.text = hero["display_name"]
 	count_label.text = "Owned: " + str(hero_counts[hero_id])
+
+	var stars = SaveManager.get_hero_star_level(hero_id)
+	if stars > 0:
+		count_label.text += "  |  " + "★".repeat(stars) + "  (+" + str(stars * SaveManager.ATTACK_BONUS_PER_STAR) + " ATK)"
 
 	update_deck_button(hero_id)
 
