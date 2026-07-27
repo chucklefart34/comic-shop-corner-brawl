@@ -101,7 +101,10 @@ func draw_card():
 
 func draw_to_hand(target: int):
 	while hand.size() < target:
+		var before = hand.size()
 		draw_card()
+		if hand.size() == before:
+			break
 
 
 # ----------------------------

@@ -94,6 +94,15 @@ var heroes = {
 		"attack_bonus": 0
 	},
 	
+	"Hero13": {
+		"display_name": "Rob'n'steal",
+		"rarity": "Legendary",
+		"attack_a": [100],
+		"attack_b": [1, 300],
+		"attack_bonus": 0
+	},
+	
+	
 }
 
 func _ready():
