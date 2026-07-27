@@ -95,8 +95,8 @@ var heroes = {
 	},
 	
 	"Hero13": {
-		"display_name": "Robin Steele",
-		"rarity": "Legendary",
+		"display_name": "Robin steel",
+		"rarity": "Rare",
 		"attack_a": [100],
 		"attack_b": [1, 300],
 		"attack_bonus": 0
