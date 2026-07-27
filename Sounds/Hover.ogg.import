@@ -2,13 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cbxhb7o6q8gfr"
-path="res://.godot/imported/Hover.ogg-87a10de0cad335fed3e31fb32e445b09.oggvorbisstr"
+uid="uid://b0jqht3syi7pk"
+path="res://.godot/imported/hover.ogg-14e9fc39fee925fd30a016413a8b3d53.oggvorbisstr"
 
 [deps]
 
-source_file="res://Sounds/Hover.ogg"
-dest_files=["res://.godot/imported/Hover.ogg-87a10de0cad335fed3e31fb32e445b09.oggvorbisstr"]
+source_file="res://Sounds/hover.ogg"
+dest_files=["res://.godot/imported/hover.ogg-14e9fc39fee925fd30a016413a8b3d53.oggvorbisstr"]
 
 [params]
 
