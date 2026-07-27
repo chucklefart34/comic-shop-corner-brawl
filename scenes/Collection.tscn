@@ -62,10 +62,10 @@ text = "Count:"
 
 [node name="DeckButton" type="Button" parent="DetailPanel" unique_id=1408525936]
 layout_mode = 0
-offset_left = 752.0
-offset_top = 218.0
-offset_right = 852.0
-offset_bottom = 249.0
+offset_left = 701.0
+offset_top = 217.0
+offset_right = 801.0
+offset_bottom = 248.0
 text = "Add to deck"
 
 [node name="BackButton" type="Button" parent="DetailPanel" unique_id=158125520]

@@ -88,7 +88,6 @@ text = "Attack 2!"
 
 [node name="EndTurnButton" type="Button" parent="UI" unique_id=492956389]
 layout_mode = 2
-offset_transform_enabled = true
 offset_transform_visual_only = false
 text = "End Turn"
 icon_alignment = 1
