@@ -55,3 +55,16 @@ offset_top = 16.0
 offset_right = 201.0
 offset_bottom = 128.0
 text = "Tokens: "
+
+[node name="RebirthButton" type="Button" parent="." unique_id=645556760]
+layout_mode = 0
+offset_left = 1055.0
+offset_top = 603.0
+offset_right = 1121.0
+offset_bottom = 634.0
+text = "Rebirth"
+
+[node name="RebirthConfirmDialog" type="ConfirmationDialog" parent="." unique_id=819493990]
+dialog_text = "Rebirthing will reset your tokens, heroes, and deck.
+You'll gain a permanent x1.5 token multiplier.
+Are you sure?"

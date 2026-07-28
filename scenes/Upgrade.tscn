@@ -37,6 +37,6 @@ layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1617324242]
 z_index = -1000
-position = Vector2(576, 319.00003)
+position = Vector2(576, 321.00003)
 scale = Vector2(0.6, 0.6064815)
 texture = ExtResource("2_p0jec")

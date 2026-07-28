@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 script = ExtResource("1_wbfu4")
 
 [node name="UI" type="VBoxContainer" parent="." unique_id=788553722]
@@ -21,6 +22,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
+accessibility_region = true
+alignment = 1
 
 [node name="TopBar" type="HBoxContainer" parent="UI" unique_id=243876078]
 layout_mode = 2
@@ -57,9 +60,11 @@ horizontal_alignment = 2
 
 [node name="InfoLabel" type="Label" parent="UI" unique_id=592066926]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="HeroArea" type="HBoxContainer" parent="UI" unique_id=1625025132]
 layout_mode = 2
+offset_transform_visual_only = false
 alignment = 1
 
 [node name="HeroButton1" type="Button" parent="UI/HeroArea" unique_id=446877276]
@@ -77,6 +82,7 @@ icon_alignment = 1
 
 [node name="AttackArea" type="HBoxContainer" parent="UI" unique_id=1476886037]
 layout_mode = 2
+size_flags_vertical = 10
 
 [node name="AttackAButton" type="Button" parent="UI/AttackArea" unique_id=860916527]
 layout_mode = 2
@@ -88,13 +94,16 @@ text = "Attack 2!"
 
 [node name="EndTurnButton" type="Button" parent="UI" unique_id=492956389]
 layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 2.47
 offset_transform_visual_only = false
 text = "End Turn"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759838696]
+visible = false
 z_index = -1000
-position = Vector2(574, 322)
+position = Vector2(576, 323.00003)
 scale = Vector2(0.6, 0.59999996)
 texture = ExtResource("2_xkndl")

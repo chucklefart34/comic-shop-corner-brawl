@@ -5,7 +5,9 @@ const SAVE_PATH = "user://savegame.json"
 var data = {
 	"owned_heroes": [],
 	"deck": [],
-	"currency": 0
+	"currency": 0,
+	"rebirth_count": 0,
+	"token_multiplier": 1.0
 }
  
 func _ready():
@@ -50,20 +52,23 @@ func load_game():
 		data["deck"] = []
 	if not data.has("currency"):
 		data["currency"] = 0
-	RunData.deck = data.deck
-	save_game()
+	if not data.has("rebirth_count"):
+		data["rebirth_count"] = 0
+	if not data.has("token_multiplier"):
+		data["token_multiplier"] = 1.0
  
 # -------------------------
 # RESET
 # -------------------------
 func reset_game():
 	data = {
-		"owned_heroes": [],
-		"deck": [],
+		"owned_heroes": STARTING_HEROES.duplicate(),
+		"deck": STARTING_HEROES.duplicate(),
 		"currency": 0,
+		"rebirth_count": 0,
+		"token_multiplier": 1.0
 	}
 	save_game()
- 
 # -------------------------
 # HERO STORAGE
 # -------------------------
@@ -75,7 +80,7 @@ func add_hero(hero_id: String):
 # CURRENCY / TOKENS
 # -------------------------
 func add_currency(amount: int):
-	data["currency"] += amount
+	data["currency"] += amount * data["token_multiplier"]
 	save_game()
  
 func can_afford(amount: int) -> bool:
@@ -137,3 +142,24 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 	return get_hero_star_level(hero_id) * ATTACK_BONUS_PER_STAR
 	
 	
+#rebirth shit
+const REBIRTH_THRESHOLD := 1000  # tune this 
+const STARTING_HEROES := ["hero1", "hero2", "hero3"]
+
+func can_rebirth() -> bool:
+	return data["currency"] >= REBIRTH_THRESHOLD
+	
+	
+func do_rebirth() -> bool:
+	if not can_rebirth():
+		return false
+
+	data["rebirth_count"] += 1
+	data["token_multiplier"] *= 1.5
+
+	data["owned_heroes"] = STARTING_HEROES.duplicate()
+	data["deck"] = STARTING_HEROES.duplicate()
+	data["currency"] = 0
+
+	save_game()
+	return true

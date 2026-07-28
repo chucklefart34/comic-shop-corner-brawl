@@ -43,6 +43,7 @@ var enemy_max_hp: int = 0
 func _ready():
 	randomize()
 
+	
 	deck = RunData.deck.duplicate()
 	deck.shuffle()
 

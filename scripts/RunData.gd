@@ -46,5 +46,4 @@ func reset():
 	deck = SaveManager.data["deck"].duplicate()
 
 func ensure_deck_loaded():
-	if deck.is_empty():
-		deck = SaveManager.data["deck"].duplicate()
+	deck = SaveManager.data["deck"].duplicate()

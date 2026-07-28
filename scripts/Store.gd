@@ -4,16 +4,20 @@ extends Control
 @onready var buy_pack_button = $BuyPackButton
 @onready var hero_name_label = $HeroNameLabel 
 @onready var currency_label = $CurrencyLabel
+@onready var rebirth_button = $RebirthButton
+@onready var rebirth_confirm_dialog = $RebirthConfirmDialog
 
 func _ready():
 	buy_pack_button.pressed.connect(_on_buy_pack_button_pressed)
+	rebirth_button.pressed.connect(_on_rebirth_button_pressed)
+	update_currency_label()
+	rebirth_confirm_dialog.confirmed.connect(_on_rebirth_confirmed)
 	update_currency_label()
 	
 	return_button.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 		update_currency_label()
 	)
-
 	connect_button_sounds(self)
 
 func connect_button_sounds(node: Node):
@@ -24,7 +28,20 @@ func connect_button_sounds(node: Node):
 		connect_button_sounds(child)  # recurse into children too
 	
 func update_currency_label():
-	currency_label.text = "Tokens: " + str(SaveManager.data["currency"])
+	currency_label.text = "Tokens: " + str(SaveManager.data["currency"]) \
+		+ "  (x" + str(SaveManager.data["token_multiplier"]) + " multiplier)"
+	rebirth_button.disabled = not SaveManager.can_rebirth()
+	
+func _on_rebirth_button_pressed():
+	if not SaveManager.can_rebirth():
+		hero_name_label.text = "Need " + str(SaveManager.REBIRTH_THRESHOLD) + " tokens to rebirth!"
+		return
+	rebirth_confirm_dialog.popup_centered()
+
+func _on_rebirth_confirmed():
+	SaveManager.do_rebirth()
+	hero_name_label.text = "Rebirthed! Multiplier now x" + str(SaveManager.data["token_multiplier"])
+	update_currency_label()
 
 func _on_buy_pack_button_pressed():
 	if not SaveManager.spend_currency(1):
@@ -79,5 +96,3 @@ func roll_rarity():
 		return "Epic"
 	else:
 		return "Legendary"
-
-	

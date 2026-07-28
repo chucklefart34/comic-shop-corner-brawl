@@ -11,6 +11,7 @@ extends Control
 func _ready():
 	SaveManager.load_game()
 	play_button.pressed.connect(func():
+		RunData.start_new_run()
 		get_tree().change_scene_to_file("res://scenes/Game.tscn")
 		
 )
