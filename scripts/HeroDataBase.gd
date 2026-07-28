@@ -2,7 +2,7 @@ extends Node
 
 var heroes = {
 	"Hero1": {
-		"display_name": "MoonKnight",
+		"display_name": "MoonWarrior",
 		"rarity": "Common",
 		"attack_a": [1, 8],
 		"attack_b": [6],
@@ -10,7 +10,7 @@ var heroes = {
 	},
 
 	"Hero2": {
-		"display_name": "Batman",
+		"display_name": "Gnatman",
 		"rarity": "Common",
 		"attack_a": [1, 8],
 		"attack_b": [6],
