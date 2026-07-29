@@ -190,10 +190,11 @@ func execute_attack():
 
 	# WIN CHECK
 	if enemy_hp <= 0:
+		var tokens_earned = calculate_token_reward()
 		RunData.battles_won += 1
 		RunData.fight_index += 1
-		RunData.tokens += 1
-		SaveManager.add_currency(1)
+		RunData.tokens += tokens_earned
+		SaveManager.add_currency(tokens_earned)
 		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
 
@@ -202,6 +203,23 @@ func execute_attack():
 	await get_tree().create_timer(0.6).timeout
 	enemy_turn()
 	
+	
+# run shit with scaling tokens fucking bitchass code fuck you
+func calculate_token_reward() -> int:
+	var fight_number = RunData.fight_index + 1
+
+	if fight_number <= 20:
+		return 1
+	elif fight_number <= 50:
+		return 2
+	elif fight_number <= 100:
+		return 3
+	elif fight_number <= 200:
+		return 4
+	elif fight_number <= 350:
+		return 5
+	else:
+		return 6
 # ----------------------------
 # WIN / LOSE
 # ----------------------------
