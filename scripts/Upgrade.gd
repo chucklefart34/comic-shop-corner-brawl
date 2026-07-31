@@ -9,7 +9,7 @@ var upgrades = []
 func _ready():
 	randomize()
 	upgrades = [
-		{"name":"Heal 5 HP", "type":"heal"},
+		{"name":"Heal 10 HP", "type":"heal"},
 		{"name":"+1 Damage (Random Hero)", "type":"buff_random"},
 		{"name":"Remove Random Card", "type":"remove_card"},
 		{"name":"Increase Max HP +5", "type":"max_hp"},
@@ -26,10 +26,14 @@ func _ready():
 
 # PICK UPGRADE
 func pick_upgrade(index: int):
+	option1.disabled = true
+	option2.disabled = true
+	option3.disabled = true
+
 	var upg = upgrades[index]
 	match upg["type"]:
 		"heal":
-			RunData.player_hp = min(RunData.player_hp + 5, RunData.player_max_hp)
+			RunData.player_hp = min(RunData.player_hp + 10, RunData.player_max_hp)
 		"max_hp":
 			RunData.player_max_hp += 5
 			RunData.player_hp += 5

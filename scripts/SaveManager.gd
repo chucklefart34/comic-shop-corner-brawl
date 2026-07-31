@@ -3,12 +3,13 @@ extends Node
 const SAVE_PATH = "user://savegame.json"
  
 var data = {
-	"owned_heroes": [],
-	"deck": [],
+	"owned_heroes": ["Hero1", "Hero2", "Hero3"],
+	"deck": ["Hero1", "Hero2", "Hero3"],
 	"currency": 0,
 	"rebirth_count": 0,
 	"token_multiplier": 1.0
 }
+
  
 func _ready():
 	load_game()
@@ -33,7 +34,7 @@ func save_game():
 func load_game():
 	if not FileAccess.file_exists(SAVE_PATH):
 		print("No save found, creating new one")
-		save_game()
+		reset_game()
 		return
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var content = file.get_as_text()
@@ -97,6 +98,7 @@ func spend_currency(amount: int) -> bool:
 # DECK SYSTEM
 # -------------------------
 const MAX_DECK_SIZE := 10
+const MIN_DECK_SIZE := 5
  
 func add_to_deck(hero_id: String) -> bool:
 	if hero_id in data["deck"]:
@@ -107,10 +109,13 @@ func add_to_deck(hero_id: String) -> bool:
 	save_game()
 	return true
  
-func remove_from_deck(hero_id: String):
+func remove_from_deck(hero_id: String) -> bool:
+	if data["deck"].size() <= MIN_DECK_SIZE:
+		return false
 	data["deck"].erase(hero_id)
 	save_game()
- 
+	return true
+	
 func hero_in_deck(hero_id: String) -> bool:
 	return hero_id in data["deck"]
 	
@@ -144,7 +149,7 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 	
 #rebirth shit
 const REBIRTH_THRESHOLD := 1000  # tune this 
-const STARTING_HEROES := ["hero1", "hero2", "hero3"]
+const STARTING_HEROES := ["Hero1", "Hero2", "Hero3"]
 
 func can_rebirth() -> bool:
 	return data["currency"] >= REBIRTH_THRESHOLD

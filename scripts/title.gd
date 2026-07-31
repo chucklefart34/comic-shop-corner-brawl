@@ -43,7 +43,7 @@ func connect_button_sounds(node: Node):
 		"Win fights to earn upgrades and tokens.\n" + \
 		"Collect duplicate heroes to earn stars\n" + \
 		"and permanent attack bonuses\n" + \
-		"Instagram: chucklefart34, adarexists "
+		" "
 		
 	
 

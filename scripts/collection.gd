@@ -12,6 +12,7 @@ extends Control
 @onready var deck_panel = $DeckPanel
 @onready var deck_grid = $DeckPanel/ScrollContainer/DeckGrid
 @onready var close_deck_button = $DeckPanel/CloseDeckButton
+@onready var portrait_rect = $DetailPanel/PortraitRect
 
 var selected_hero = ""
 var hero_counts = {}
@@ -135,21 +136,27 @@ func create_card(hero_id):
 	)
 	return btn
 
-
 func show_hero(hero_id):
 	selected_hero = hero_id
 	var hero = HeroDataBase.heroes[hero_id]
 
 	detail_panel.visible = true
 	name_label.text = hero["display_name"]
-	count_label.text = "Owned: " + str(hero_counts[hero_id])
+	count_label.text = "Owned: " + str(hero_counts[hero_id]) + "  |  Rarity: " + hero["rarity"]
+	count_label.text += "\nAttack A: " + format_attack(hero["attack_a"])
+	count_label.text += "  |  Attack B: " + format_attack(hero["attack_b"])
 
 	var stars = SaveManager.get_hero_star_level(hero_id)
 	if stars > 0:
 		count_label.text += "  |  " + "★".repeat(stars) + "  (+" + str(stars * SaveManager.ATTACK_BONUS_PER_STAR) + " ATK)"
 
-	update_deck_button(hero_id)
+	if hero.get("portrait") != null:
+		portrait_rect.texture = hero["portrait"]
+		portrait_rect.visible = true
+	else:
+		portrait_rect.visible = false
 
+	update_deck_button(hero_id)
 
 func update_deck_button(hero_id):
 	if SaveManager.hero_in_deck(hero_id):
@@ -157,19 +164,29 @@ func update_deck_button(hero_id):
 	else:
 		deck_button.text = "Add To Deck"
 
-
+func format_attack(dice: Array) -> String:
+	var parts = []
+	for x in dice:
+		parts.append(str(x))
+	return "-".join(parts)
+	
 func _on_deck_button_pressed():
 	
 	if selected_hero == "":
 		return
 
 	if SaveManager.hero_in_deck(selected_hero):
-		SaveManager.remove_from_deck(selected_hero)
+		if !SaveManager.remove_from_deck(selected_hero):
+			announce_label.text = "Deck needs at least " + str(SaveManager.MIN_DECK_SIZE) + " cards!"
+			return
 	else:
 		if !SaveManager.add_to_deck(selected_hero):
 			announce_label.text = ("Deck is full!")
 			return
 	
+
+	show_hero(selected_hero)
+	build_collection()
 
 	show_hero(selected_hero)
 	build_collection()

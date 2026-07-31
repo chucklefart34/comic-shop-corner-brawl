@@ -83,6 +83,15 @@ offset_top = -20.0
 offset_right = -64.0
 offset_bottom = 3.0
 
+[node name="PortraitRect" type="TextureRect" parent="DetailPanel" unique_id=1412629606]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 144.0
+offset_right = 369.0
+offset_bottom = 491.0
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ViewDeckButton" type="Button" parent="." unique_id=1330513295]
 layout_mode = 0
 offset_left = 1005.0
