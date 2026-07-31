@@ -208,15 +208,15 @@ func execute_attack():
 func calculate_token_reward() -> int:
 	var fight_number = RunData.fight_index + 1
 
-	if fight_number <= 20:
+	if fight_number <= 10:
 		return 1
-	elif fight_number <= 50:
+	elif fight_number <= 25:
 		return 2
-	elif fight_number <= 100:
+	elif fight_number <= 50:
 		return 3
-	elif fight_number <= 200:
+	elif fight_number <= 100:
 		return 4
-	elif fight_number <= 350:
+	elif fight_number <= 200:
 		return 5
 	else:
 		return 6

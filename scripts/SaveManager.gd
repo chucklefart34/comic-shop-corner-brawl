@@ -3,8 +3,8 @@ extends Node
 const SAVE_PATH = "user://savegame.json"
  
 var data = {
-	"owned_heroes": ["Hero1", "Hero2", "Hero3"],
-	"deck": ["Hero1", "Hero2", "Hero3"],
+	"owned_heroes": ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"],
+	"deck": ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8", ],
 	"currency": 0,
 	"rebirth_count": 0,
 	"token_multiplier": 1.0
@@ -124,7 +124,7 @@ func hero_in_deck(hero_id: String) -> bool:
 # DUPLICATE UPGRADES
 # -------------------------
 const STAR_THRESHOLDS := [10, 50, 100, 300, 500, 750, 1000, 5000, 10000]
-const ATTACK_BONUS_PER_STAR := 5  # each star adds +2 to attack rolls
+const ATTACK_BONUS_PER_STAR := 5 
 
 func get_hero_copies(hero_id: String) -> int:
 	var count := 0
@@ -149,7 +149,7 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 	
 #rebirth shit
 const REBIRTH_THRESHOLD := 1000  # tune this 
-const STARTING_HEROES := ["Hero1", "Hero2", "Hero3"]
+const STARTING_HEROES := ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"]
 
 func can_rebirth() -> bool:
 	return data["currency"] >= REBIRTH_THRESHOLD

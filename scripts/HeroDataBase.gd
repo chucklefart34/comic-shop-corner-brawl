@@ -102,6 +102,23 @@ var heroes = {
 		"attack_bonus": 0
 	},
 	
+	"Hero14": {
+		"display_name": "arachnaboy",
+		"rarity": "Rare",
+		"attack_a": [14],
+		"attack_b": [4, 39],
+		"attack_bonus": 0
+	},
+	
+	"Hero15": {
+		"display_name": "insivible",
+		"rarity": "Epic",
+		"attack_a": [25],
+		"attack_b": [15, 90],
+		"attack_bonus": 0
+	},
+	
+	
 	
 }
 
