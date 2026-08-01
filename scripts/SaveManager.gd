@@ -3,10 +3,13 @@ extends Node
 const SAVE_PATH = "user://savegame.json"
  
 var data = {
-	"owned_heroes": [],
-	"deck": [],
-	"currency": 0
+	"owned_heroes": ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"],
+	"deck": ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8", ],
+	"currency": 0,
+	"rebirth_count": 0,
+	"token_multiplier": 1.0
 }
+
  
 func _ready():
 	load_game()
@@ -14,7 +17,13 @@ func _ready():
 # -------------------------
 # SAVE / LOAD
 # -------------------------
+# SaveManager.gd
+
+var testing_mode := false # flip to false before shipping/building for real
+
 func save_game():
+	if testing_mode:
+		return
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		print("Save failed")
@@ -25,7 +34,7 @@ func save_game():
 func load_game():
 	if not FileAccess.file_exists(SAVE_PATH):
 		print("No save found, creating new one")
-		save_game()
+		reset_game()
 		return
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	var content = file.get_as_text()
@@ -44,20 +53,32 @@ func load_game():
 		data["deck"] = []
 	if not data.has("currency"):
 		data["currency"] = 0
-	RunData.deck = data.deck
-	save_game()
+	if not data.has("rebirth_count"):
+		data["rebirth_count"] = 0
+	if not data.has("lifetime_wins"):
+		data["lifetime_wins"] = 0
+	if not data.has("token_multiplier"):
+		data["token_multiplier"] = 1.0
  
+
+func add_lifetime_win():
+	data["lifetime_wins"] += 1
+	save_game()
 # -------------------------
 # RESET
 # -------------------------
 func reset_game():
 	data = {
-		"owned_heroes": [],
-		"deck": [],
+		"owned_heroes": STARTING_HEROES.duplicate(),
+		"deck": STARTING_HEROES.duplicate(),
 		"currency": 0,
+		"rebirth_count": 0,
+		"lifetime_wins": 0,
+		"token_multiplier": 1.0
+		
+		
 	}
 	save_game()
- 
 # -------------------------
 # HERO STORAGE
 # -------------------------
@@ -69,7 +90,7 @@ func add_hero(hero_id: String):
 # CURRENCY / TOKENS
 # -------------------------
 func add_currency(amount: int):
-	data["currency"] += amount
+	data["currency"] += amount * data["token_multiplier"]
 	save_game()
  
 func can_afford(amount: int) -> bool:
@@ -86,6 +107,7 @@ func spend_currency(amount: int) -> bool:
 # DECK SYSTEM
 # -------------------------
 const MAX_DECK_SIZE := 10
+const MIN_DECK_SIZE := 5
  
 func add_to_deck(hero_id: String) -> bool:
 	if hero_id in data["deck"]:
@@ -96,9 +118,62 @@ func add_to_deck(hero_id: String) -> bool:
 	save_game()
 	return true
  
-func remove_from_deck(hero_id: String):
+func remove_from_deck(hero_id: String) -> bool:
+	if data["deck"].size() <= MIN_DECK_SIZE:
+		return false
 	data["deck"].erase(hero_id)
 	save_game()
- 
+	return true
+	
 func hero_in_deck(hero_id: String) -> bool:
 	return hero_id in data["deck"]
+	
+	
+# -------------------------
+# DUPLICATE UPGRADES
+# -------------------------
+const STAR_THRESHOLDS := [10, 50, 100, 300, 500, 750, 1000, 5000, 10000]
+const ATTACK_BONUS_PER_STAR := 5 
+
+func get_hero_copies(hero_id: String) -> int:
+	var count := 0
+	for id in data["owned_heroes"]:
+		if id == hero_id:
+			count += 1
+	return count
+
+func get_hero_star_level(hero_id: String) -> int:
+	var copies = get_hero_copies(hero_id)
+	var stars := 0
+	for threshold in STAR_THRESHOLDS:
+		if copies >= threshold:
+			stars += 1
+		else:
+			break
+	return stars
+
+func get_hero_attack_bonus(hero_id: String) -> int:
+	return get_hero_star_level(hero_id) * ATTACK_BONUS_PER_STAR
+	
+	
+#rebirth shit
+const REBIRTH_THRESHOLD := 1000  # tune this 
+const STARTING_HEROES := ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"]
+
+func can_rebirth() -> bool:
+	return data["currency"] >= REBIRTH_THRESHOLD
+	
+	
+func do_rebirth() -> bool:
+	if not can_rebirth():
+		return false
+
+	data["rebirth_count"] += 1
+	data["token_multiplier"] *= 1.5
+
+	data["owned_heroes"] = STARTING_HEROES.duplicate()
+	data["deck"] = STARTING_HEROES.duplicate()
+	data["currency"] = 0
+
+	save_game()
+	return true

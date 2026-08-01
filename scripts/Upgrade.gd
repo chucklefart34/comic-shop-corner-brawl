@@ -9,7 +9,7 @@ var upgrades = []
 func _ready():
 	randomize()
 	upgrades = [
-		{"name":"Heal 5 HP", "type":"heal"},
+		{"name":"Heal 10 HP", "type":"heal"},
 		{"name":"+1 Damage (Random Hero)", "type":"buff_random"},
 		{"name":"Remove Random Card", "type":"remove_card"},
 		{"name":"Increase Max HP +5", "type":"max_hp"},
@@ -22,13 +22,18 @@ func _ready():
 	option1.pressed.connect(func(): pick_upgrade(0))
 	option2.pressed.connect(func(): pick_upgrade(1))
 	option3.pressed.connect(func(): pick_upgrade(2))
+	
 
 # PICK UPGRADE
 func pick_upgrade(index: int):
+	option1.disabled = true
+	option2.disabled = true
+	option3.disabled = true
+
 	var upg = upgrades[index]
 	match upg["type"]:
 		"heal":
-			RunData.player_hp = min(RunData.player_hp + 5, RunData.player_max_hp)
+			RunData.player_hp = min(RunData.player_hp + 10, RunData.player_max_hp)
 		"max_hp":
 			RunData.player_max_hp += 5
 			RunData.player_hp += 5
@@ -40,6 +45,7 @@ func pick_upgrade(index: int):
 					RunData.hero_upgrades[hero_id] = {}
 				RunData.hero_upgrades[hero_id]["attack_bonus"] = \
 					RunData.hero_upgrades[hero_id].get("attack_bonus", 0) + 1
+					
 		"remove_card":
 			if RunData.deck.size() > 0:
 				var idx = randi() % RunData.deck.size()
@@ -52,3 +58,12 @@ func pick_upgrade(index: int):
 	info_label.text = "Upgrade applied!"
 	await get_tree().create_timer(0.8).timeout
 	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)  # recurse into children too

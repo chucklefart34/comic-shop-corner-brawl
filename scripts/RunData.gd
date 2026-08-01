@@ -44,3 +44,6 @@ func reset():
 	current_hand.clear()
 	hero_upgrades.clear()
 	deck = SaveManager.data["deck"].duplicate()
+
+func ensure_deck_loaded():
+	deck = SaveManager.data["deck"].duplicate()

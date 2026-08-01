@@ -12,6 +12,7 @@ extends Control
 @onready var deck_panel = $DeckPanel
 @onready var deck_grid = $DeckPanel/ScrollContainer/DeckGrid
 @onready var close_deck_button = $DeckPanel/CloseDeckButton
+@onready var portrait_rect = $DetailPanel/PortraitRect
 
 var selected_hero = ""
 var hero_counts = {}
@@ -29,6 +30,16 @@ func _ready():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
 	)
 	
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)  # recurse into children too
+	
+
 func _on_view_deck_button_pressed():
 	build_deck_panel()
 	deck_panel.visible = true
@@ -91,6 +102,11 @@ func create_card(hero_id):
 	var count = hero_counts[hero_id]
 	btn.custom_minimum_size = Vector2(140, 180)
 
+	var stars = SaveManager.get_hero_star_level(hero_id)
+	var star_text = ""
+	if stars > 0:
+		star_text = "\n" + "★".repeat(stars)
+
 	var vbox = VBoxContainer.new()
 	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -107,7 +123,7 @@ func create_card(hero_id):
 	portrait_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	var label = Label.new()
-	label.text = hero["display_name"] + "\nx" + str(count)
+	label.text = hero["display_name"] + "\nx" + str(count) + star_text
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -120,18 +136,27 @@ func create_card(hero_id):
 	)
 	return btn
 
-
 func show_hero(hero_id):
 	selected_hero = hero_id
-
 	var hero = HeroDataBase.heroes[hero_id]
 
 	detail_panel.visible = true
 	name_label.text = hero["display_name"]
-	count_label.text = "Owned: " + str(hero_counts[hero_id])
+	count_label.text = "Owned: " + str(hero_counts[hero_id]) + "  |  Rarity: " + hero["rarity"]
+	count_label.text += "\nAttack A: " + format_attack(hero["attack_a"])
+	count_label.text += "  |  Attack B: " + format_attack(hero["attack_b"])
+
+	var stars = SaveManager.get_hero_star_level(hero_id)
+	if stars > 0:
+		count_label.text += "  |  " + "★".repeat(stars) + "  (+" + str(stars * SaveManager.ATTACK_BONUS_PER_STAR) + " ATK)"
+
+	if hero.get("portrait") != null:
+		portrait_rect.texture = hero["portrait"]
+		portrait_rect.visible = true
+	else:
+		portrait_rect.visible = false
 
 	update_deck_button(hero_id)
-
 
 func update_deck_button(hero_id):
 	if SaveManager.hero_in_deck(hero_id):
@@ -139,14 +164,21 @@ func update_deck_button(hero_id):
 	else:
 		deck_button.text = "Add To Deck"
 
-
+func format_attack(dice: Array) -> String:
+	var parts = []
+	for x in dice:
+		parts.append(str(x))
+	return "-".join(parts)
+	
 func _on_deck_button_pressed():
 	
 	if selected_hero == "":
 		return
 
 	if SaveManager.hero_in_deck(selected_hero):
-		SaveManager.remove_from_deck(selected_hero)
+		if !SaveManager.remove_from_deck(selected_hero):
+			announce_label.text = "Deck needs at least " + str(SaveManager.MIN_DECK_SIZE) + " cards!"
+			return
 	else:
 		if !SaveManager.add_to_deck(selected_hero):
 			announce_label.text = ("Deck is full!")
@@ -155,3 +187,8 @@ func _on_deck_button_pressed():
 
 	show_hero(selected_hero)
 	build_collection()
+
+	show_hero(selected_hero)
+	build_collection()
+	
+	

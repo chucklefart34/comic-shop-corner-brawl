@@ -2,30 +2,30 @@ extends Node
 
 var heroes = {
 	"Hero1": {
-		"display_name": "MoonKnight",
+		"display_name": "MoonWarrior",
 		"rarity": "Common",
-		"attack_a": [1, 8],
-		"attack_b": [6],
+		"attack_a": [6],
+		"attack_b": [3, 9],
 		"attack_bonus": 0
 	},
 
 	"Hero2": {
-		"display_name": "Batman",
+		"display_name": "Gnatman",
 		"rarity": "Common",
-		"attack_a": [1, 8],
-		"attack_b": [6],
+		"attack_a": [6],
+		"attack_b": [1, 8],
 		"attack_bonus": 0
 	},
 
 	"Hero3": {
-		"display_name": "Rogue",
+		"display_name": "Rascal",
 		"rarity": "Legendary",
-		"attack_a": [3],
-		"attack_b": [3, 30],
+		"attack_a": [20, 50],
+		"attack_b": [3, 150],
 		"attack_bonus": 0
 	},
 	"Hero4": {
-		"display_name": "Superman",
+		"display_name": "Duperman",
 		"rarity": "Common",
 		"attack_a": [2],
 		"attack_b": [4, 10],
@@ -33,61 +33,61 @@ var heroes = {
 	},
 
 	"Hero5": {
-		"display_name": "Booster Gold",
+		"display_name": "Boosting Silver",
 		"rarity": "Epic",
-		"attack_a": [1, 8],
-		"attack_b": [6],
+		"attack_a": [15, 30],
+		"attack_b": [10, 60],
 		"attack_bonus": 0
 	},
 
 	"Hero6": {
-		"display_name": "Superboy Prime",
+		"display_name": "Duperboy Prime",
 		"rarity": "Rare",
-		"attack_a": [3],
+		"attack_a": [10, 20],
 		"attack_b": [3, 30],
 		"attack_bonus": 0
 	},
 	"Hero7": {
-		"display_name": "Martian Manhunter",
+		"display_name": "Martial Manhunt",
 		"rarity": "Common",
-		"attack_a": [2],
+		"attack_a": [2, 4],
 		"attack_b": [4, 10],
 		"attack_bonus": 0
 	},
 
 	"Hero8": {
-		"display_name": "The Flash",
+		"display_name": "The Speed",
 		"rarity": "Common",
-		"attack_a": [1, 8],
-		"attack_b": [6],
+		"attack_a": [1, 4],
+		"attack_b": [1, 10],
 		"attack_bonus": 0
 	},
 
 	"Hero9": {
-		"display_name": "Wonder Woman",
+		"display_name": "Thoughtful Woman",
 		"rarity": "Common",
-		"attack_a": [3],
-		"attack_b": [3, 30],
+		"attack_a": [5],
+		"attack_b": [1, 20],
 		"attack_bonus": 0
 	},
 	"Hero10": {
-		"display_name": "Animal Man",
+		"display_name": "Creature Man",
 		"rarity": "Uncommon",
-		"attack_a": [2],
-		"attack_b": [4, 10],
+		"attack_a": [9],
+		"attack_b": [4, 15],
 		"attack_bonus": 0
 	},
 
 	"Hero11": {
-		"display_name": "Jason Todd",
+		"display_name": "Cardinal Hood",
 		"rarity": "Common",
-		"attack_a": [1, 8],
-		"attack_b": [6],
+		"attack_a": [7],
+		"attack_b": [5, 10],
 		"attack_bonus": 0
 	},
 
 	"Hero12": {
-		"display_name": "Deadman",
+		"display_name": "Ghostman",
 		"rarity": "Rare",
 		"attack_a": [3],
 		"attack_b": [3, 30],
@@ -96,11 +96,28 @@ var heroes = {
 	
 	"Hero13": {
 		"display_name": "Robin steel",
-		"rarity": "Rare",
-		"attack_a": [100],
-		"attack_b": [1, 300],
+		"rarity": "Legendary",
+		"attack_a": [50],
+		"attack_b": [1, 75],
 		"attack_bonus": 0
 	},
+	
+	"Hero14": {
+		"display_name": "arachnaboy",
+		"rarity": "Rare",
+		"attack_a": [14],
+		"attack_b": [4, 39],
+		"attack_bonus": 0
+	},
+	
+	"Hero15": {
+		"display_name": "insivible",
+		"rarity": "Epic",
+		"attack_a": [25],
+		"attack_b": [15, 90],
+		"attack_bonus": 0
+	},
+	
 	
 	
 }

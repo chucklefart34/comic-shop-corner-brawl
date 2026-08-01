@@ -20,6 +20,7 @@ config/icon="res://picstures/icon.svg"
 HeroDataBase="*uid://71px2f1qcjhk"
 RunData="*uid://bmymas1qclryn"
 SaveManager="*uid://ckx4tpsrurw5a"
+SoundManager="*uid://d3ekf61pgoxxt"
 
 [display]
 
@@ -34,3 +35,4 @@ window/stretch/aspect="expand"
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

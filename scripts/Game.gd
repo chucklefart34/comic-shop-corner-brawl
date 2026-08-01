@@ -43,6 +43,7 @@ var enemy_max_hp: int = 0
 func _ready():
 	randomize()
 
+	
 	deck = RunData.deck.duplicate()
 	deck.shuffle()
 
@@ -52,6 +53,9 @@ func _ready():
 		btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		btn.custom_minimum_size = Vector2(140, 180)
 
+
+	
+		
 	start_fight()
 
 	for i in hero_buttons.size():
@@ -67,6 +71,17 @@ func _ready():
 		execute_attack()
 	)
 	end_turn_btn.pressed.connect(end_turn)
+	
+	connect_button_sounds(self)
+
+func connect_button_sounds(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			if not child.mouse_entered.is_connected(SoundManager.play_hover):
+				child.mouse_entered.connect(SoundManager.play_hover)
+			if not child.pressed.is_connected(SoundManager.play_click):
+				child.pressed.connect(SoundManager.play_click)
+		connect_button_sounds(child)
 
 # ----------------------------
 # FIGHT START
@@ -151,9 +166,12 @@ func execute_attack():
 
 	var bonus = 0
 
-	# Apply upgrade if it exists
+# Duplicate-based star bonus (persistent, from collection)
+	bonus += SaveManager.get_hero_attack_bonus(hero_id)
+
+# Run-based upgrade bonus (from Upgrade.tscn choices, if any)
 	if RunData.hero_upgrades.has(hero_id):
-		bonus = RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
+		bonus += RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
 
 	var dmg = base_damage + bonus
 
@@ -172,18 +190,37 @@ func execute_attack():
 
 	# WIN CHECK
 	if enemy_hp <= 0:
+		var tokens_earned = calculate_token_reward()
 		RunData.battles_won += 1
 		RunData.fight_index += 1
-		RunData.tokens += 1
-		SaveManager.add_currency(1)
+		RunData.tokens += tokens_earned
+		SaveManager.add_currency(tokens_earned)
+		SaveManager.add_lifetime_win()
 		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
-
+		
 	# enemy turn
 	player_can_act = false
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.6).timeout
 	enemy_turn()
 	
+	
+# run shit with scaling tokens fucking bitchass code fuck you
+func calculate_token_reward() -> int:
+	var fight_number = RunData.fight_index + 1
+
+	if fight_number <= 10:
+		return 1
+	elif fight_number <= 25:
+		return 2
+	elif fight_number <= 50:
+		return 3
+	elif fight_number <= 100:
+		return 4
+	elif fight_number <= 200:
+		return 5
+	else:
+		return 6
 # ----------------------------
 # WIN / LOSE
 # ----------------------------
@@ -200,7 +237,6 @@ func end_turn():
 
 # dying shit
 	if RunData.player_hp <= 0:
-		RunData.reset()
 		get_tree().change_scene_to_file("res://scenes/Death.tscn")
 		return
 
@@ -230,7 +266,19 @@ func update_ui():
 		if i < hand.size():
 			var id = hand[i]
 			var hero = HeroDataBase.heroes[id]
-			hero_buttons[i].text = hero["display_name"]
+
+			var stars = SaveManager.get_hero_star_level(id)
+			var star_text = ""
+			if stars > 0:
+				star_text = "\n" + "★".repeat(stars)
+
+			var run_bonus_text = ""
+			if RunData.hero_upgrades.has(id):
+				var run_bonus = RunData.hero_upgrades[id].get("attack_bonus", 0)
+				if run_bonus > 0:
+					run_bonus_text = "  +" + str(run_bonus)
+
+			hero_buttons[i].text = hero["display_name"] + star_text + run_bonus_text
 			hero_buttons[i].icon = hero.get("portrait")
 		else:
 			hero_buttons[i].text = "-"
