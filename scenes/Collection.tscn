@@ -21,7 +21,7 @@ offset_bottom = 646.0
 
 [node name="HeroGrid" type="GridContainer" parent="ScrollContainer" unique_id=1307845000]
 layout_mode = 2
-columns = 7
+columns = 4
 
 [node name="ReturnButton" type="Button" parent="." unique_id=551151019]
 layout_mode = 0
@@ -116,6 +116,7 @@ offset_bottom = 223.0
 
 [node name="DeckGrid" type="GridContainer" parent="DeckPanel/ScrollContainer" unique_id=1579773250]
 layout_mode = 2
+columns = 5
 
 [node name="CloseDeckButton" type="Button" parent="DeckPanel" unique_id=1048577068]
 layout_mode = 0
