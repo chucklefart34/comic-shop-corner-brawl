@@ -100,21 +100,21 @@ size_flags_vertical = 10
 
 [node name="AttackAButton" type="Button" parent="UI/AttackArea" unique_id=860916527]
 layout_mode = 2
-text = "𝗟𝗶𝗴𝗵𝘁 𝗔𝘁𝘁𝗮𝗰𝗸"
+text = "Light Attack"
 
 [node name="AttackBButton" type="Button" parent="UI/AttackArea" unique_id=325381011]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
 size_flags_stretch_ratio = 3.32
-text = "𝗛𝗲𝗮𝘃𝘆 𝗔𝘁𝘁𝗮𝗰𝗸"
+text = "Heavy Attack"
 
 [node name="EndTurnButton" type="Button" parent="UI" unique_id=492956389]
 layout_mode = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 2.47
 offset_transform_visual_only = false
-text = "𝙀𝙣𝙙 𝙏𝙪𝙧𝙣"
+text = "End Turn"
 icon_alignment = 1
 vertical_icon_alignment = 2
 

@@ -12,7 +12,9 @@ func _ready():
 	buy_pack_button.pressed.connect(_on_buy_pack_button_pressed)
 	update_currency_label()
 	hero_portrait_rect.visible = false
-	$PackOpening.visible = false   # add this
+	rebirth_button.pressed.connect(_on_rebirth_button_pressed)           
+	rebirth_confirm_dialog.confirmed.connect(_on_rebirth_confirmed) 
+	$PackOpening.visible = false   
 
 	return_button.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/Title.tscn")
@@ -34,7 +36,7 @@ func update_currency_label():
 	
 func _on_rebirth_button_pressed():
 	if not SaveManager.can_rebirth():
-		hero_name_label.text = "Need " + str(SaveManager.REBIRTH_THRESHOLD) + " tokens to rebirth!"
+		hero_name_label.text = "Need " + str(SaveManager.get_rebirth_threshold()) + " tokens to rebirth!"
 		return
 	rebirth_confirm_dialog.popup_centered()
 
@@ -125,8 +127,8 @@ func _on_strip_scroll_tick(current_x: float):
 func make_item_slot(hero: Dictionary) -> Control:
 	var slot = PanelContainer.new()
 	slot.custom_minimum_size = Vector2(120, 120)
-	slot.size = Vector2(120, 120)          # force exact size, don't let content grow it
-	slot.clip_contents = true              # prevent oversized textures from spilling out
+	slot.size = Vector2(120, 120)        
+	slot.clip_contents = true             
 
 	var rarity_colors = {
 		"Common": Color.WHITE,
@@ -150,8 +152,8 @@ func make_item_slot(hero: Dictionary) -> Control:
 
 	var tex_rect = TextureRect.new()
 	tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	tex_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL  # Godot 4.x — keeps it inside bounds
-	tex_rect.custom_minimum_size = Vector2(104, 104)  # 120 - 16 margin
+	tex_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL  
+	tex_rect.custom_minimum_size = Vector2(104, 104)  
 	if hero.get("portrait") != null:
 		tex_rect.texture = hero["portrait"]
 	margin.add_child(tex_rect)
@@ -184,7 +186,7 @@ func open_booster():
 			pool.append(hero_id)
 
 	if pool.is_empty():
-		# fallback so game NEVER breaks
+		
 		pool = HeroDataBase.heroes.keys()
 
 	var hero_id = pool.pick_random()

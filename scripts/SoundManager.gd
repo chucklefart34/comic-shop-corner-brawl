@@ -38,7 +38,7 @@ func style_button_paper(button: Button):
 	button.add_theme_stylebox_override("hover", grey_style)
 	button.add_theme_stylebox_override("pressed", grey_style)
 	button.add_theme_stylebox_override("focus", white_style)  # avoid default blue focus outline
-	button.add_theme_stylebox_override("disabled", white_style)
+	button.add_theme_stylebox_override("disabled", grey_style)
 	button.add_theme_font_override("font", main_font)
 		
 	button.add_theme_color_override("font_color", Color.BLACK)
@@ -98,7 +98,7 @@ func style_button_by_rarity(button: Button, rarity: String):
 	button.add_theme_stylebox_override("hover", hover_style)
 	button.add_theme_stylebox_override("pressed", pressed_style)
 	button.add_theme_stylebox_override("focus", normal_style)
-	button.add_theme_stylebox_override("disabled", normal_style)
+	button.add_theme_stylebox_override("disabled", hover_style)
 	button.add_theme_font_override("font", main_font)
 		
 	button.add_theme_color_override("font_color", Color.WHITE)

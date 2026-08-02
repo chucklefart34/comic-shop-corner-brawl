@@ -14,10 +14,7 @@ var data = {
 func _ready():
 	load_game()
  
-# -------------------------
-# SAVE / LOAD
-# -------------------------
-# SaveManager.gd
+
 
 var testing_mode := false # flip to false before shipping/building for real
 
@@ -151,21 +148,19 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 var REBIRTH_THRESHOLD: int = 1000 * (1.25 * data.rebirth_count)  # tune this 
 const STARTING_HEROES := ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"]
 
+func get_rebirth_threshold() -> int:
+	return int(1000 * (1.25 * data.rebirth_count))
+
 func can_rebirth() -> bool:
-	return data["currency"] >= REBIRTH_THRESHOLD
-	
-	
+	return data["currency"] >= get_rebirth_threshold()
+
 func do_rebirth() -> bool:
 	if not can_rebirth():
 		return false
-
 	data["rebirth_count"] += 1
-	REBIRTH_THRESHOLD = 1000 * (1.25 * data.rebirth_count)
 	data["token_multiplier"] *= 1.5
-
 	data["owned_heroes"] = STARTING_HEROES.duplicate()
 	data["deck"] = STARTING_HEROES.duplicate()
 	data["currency"] = 0
-
 	save_game()
 	return true

@@ -28,7 +28,6 @@ var tokens := 0
 func start_new_run():
 	player_hp = 20
 	player_max_hp = 20
-	battles_won = 0
 	fight_index = 0
 	current_fight = 1
 	current_hand.clear()
@@ -39,7 +38,6 @@ func reset():
 	player_hp = 20
 	player_max_hp = 20
 	tokens = 0
-	fight_index = 0
 	current_fight = 1
 	current_hand.clear()
 	hero_upgrades.clear()
