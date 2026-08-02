@@ -170,10 +170,11 @@ func update_deck_button(hero_id):
 		deck_button.text = "Add To Deck"
 
 func format_attack(dice: Array) -> String:
-	var parts = []
+	var min_val = dice.size() 
+	var max_val = 0
 	for x in dice:
-		parts.append(str(x))
-	return "-".join(parts)
+		max_val += x
+	return str(min_val) + "-" + str(max_val)
 	
 func _on_deck_button_pressed():
 	
