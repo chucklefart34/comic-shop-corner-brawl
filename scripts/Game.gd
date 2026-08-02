@@ -89,8 +89,10 @@ func connect_button_sounds(node: Node):
 func start_fight():
 	selected_hero_index = -1
 	selected_attack = ""
-
-	enemy_max_hp = 10 + (RunData.fight_index * 10)
+	if RunData.fight_index % 5 != 0:
+		enemy_max_hp = 10 + (RunData.fight_index * 5)
+	else:
+		enemy_max_hp = 10 + (RunData.fight_index * 10)
 	enemy_hp = enemy_max_hp
 
 	hand.clear()
