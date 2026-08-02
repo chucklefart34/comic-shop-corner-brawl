@@ -42,7 +42,7 @@ var enemy_max_hp: int = 0
 # ----------------------------
 func _ready():
 	randomize()
-
+	connect_button_sounds(self)
 	
 	deck = RunData.deck.duplicate()
 	deck.shuffle()
@@ -52,7 +52,7 @@ func _ready():
 		btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		btn.custom_minimum_size = Vector2(140, 180)
-
+	
 
 	
 		
@@ -72,14 +72,15 @@ func _ready():
 	)
 	end_turn_btn.pressed.connect(end_turn)
 	
-	connect_button_sounds(self)
+
 
 func connect_button_sounds(node: Node):
 	for child in node.get_children():
 		if child is Button:
-			child.mouse_entered.connect(SoundManager.play_hover)
-			child.pressed.connect(SoundManager.play_click)
-
+			if not child.has_meta("skip_style"):
+				child.mouse_entered.connect(SoundManager.play_hover)
+				child.pressed.connect(SoundManager.play_click)
+				SoundManager.style_button_paper(child)
 		connect_button_sounds(child)
 
 # ----------------------------
@@ -267,12 +268,12 @@ func update_ui():
 		if i < hand.size():
 			var id = hand[i]
 			var hero = HeroDataBase.heroes[id]
-
+			
 			var stars = SaveManager.get_hero_star_level(id)
 			var star_text = ""
 			if stars > 0:
 				star_text = "\n" + "★".repeat(stars)
-
+			
 			var run_bonus_text = ""
 			if RunData.hero_upgrades.has(id):
 				var run_bonus = RunData.hero_upgrades[id].get("attack_bonus", 0)
@@ -281,9 +282,11 @@ func update_ui():
 
 			hero_buttons[i].text = hero["display_name"] + star_text + run_bonus_text
 			hero_buttons[i].icon = hero.get("portrait")
+			SoundManager.style_button_by_rarity(hero_buttons[i], hero["rarity"])
 		else:
 			hero_buttons[i].text = "-"
 			hero_buttons[i].icon = null
+			SoundManager.style_button_paper(hero_buttons[i])
 func enemy_turn():
 	var dmg = randi_range(2, 6)
 	RunData.player_hp -= dmg

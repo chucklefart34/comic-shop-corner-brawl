@@ -35,11 +35,12 @@ func _ready():
 func connect_button_sounds(node: Node):
 	for child in node.get_children():
 		if child is Button:
-			child.mouse_entered.connect(SoundManager.play_hover)
-			child.pressed.connect(SoundManager.play_click)
-			SoundManager.style_button_paper(child)  
+			if not child.has_meta("skip_style"):
+				child.mouse_entered.connect(SoundManager.play_hover)
+				child.pressed.connect(SoundManager.play_click)
+				SoundManager.style_button_paper(child)
 		connect_button_sounds(child)
-
+		
 func _on_view_deck_button_pressed():
 	build_deck_panel()
 	deck_panel.visible = true
@@ -100,8 +101,12 @@ func create_card(hero_id):
 	var btn = Button.new()
 	var hero = HeroDataBase.heroes[hero_id]
 	var count = hero_counts[hero_id]
-	btn.custom_minimum_size = Vector2(140, 180)
-
+	btn.custom_minimum_size = Vector2(145, 200)
+	SoundManager.style_button_by_rarity(btn, hero["rarity"])
+	btn.set_meta("skip_style", true)
+	btn.mouse_entered.connect(SoundManager.play_hover)
+	btn.pressed.connect(SoundManager.play_click)
+	
 	var stars = SaveManager.get_hero_star_level(hero_id)
 	var star_text = ""
 	if stars > 0:
