@@ -19,7 +19,7 @@ func _ready():
 # -------------------------
 # SaveManager.gd
 
-var testing_mode := true # flip to false before shipping/building for real
+var testing_mode := false # flip to false before shipping/building for real
 
 func save_game():
 	if testing_mode:

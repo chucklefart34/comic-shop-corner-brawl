@@ -46,6 +46,9 @@ const ITEM_WIDTH = 140  # must match your slot's custom_minimum_size.x + HBox se
 const STRIP_LENGTH = 60
 const WINNING_INDEX = 45
 
+var _last_slot_crossed = -1
+var _tick_start_x = 0.0
+
 func _on_buy_pack_button_pressed():
 	if not SaveManager.spend_currency(1):
 		hero_name_label.text = "Not enough tokens!"
@@ -94,13 +97,29 @@ func play_pack_animation(result: Dictionary):
 	var jitter = randf_range(-winning_slot.size.x * 0.2, winning_slot.size.x * 0.2)
 	var target_x = marker_x - slot_center_x + jitter
 
+	# tick-sound tracking setup
+	_last_slot_crossed = -1
+	_tick_start_x = item_strip.position.x
+
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(item_strip, "position:x", target_x, 4.5)
+	tween.tween_method(_on_strip_scroll_tick, item_strip.position.x, target_x, 4.5)
 	await tween.finished
 
+	SoundManager.play_click()  # final landing "thunk"
 	reveal_result(result)
+
+func _on_strip_scroll_tick(current_x: float):
+	var item_strip = $PackOpening/ScrollClip/ItemStrip
+	item_strip.position.x = current_x
+
+	var distance_scrolled = current_x - _tick_start_x
+	var slots_passed = int(floor(abs(distance_scrolled) / ITEM_WIDTH))
+
+	if slots_passed != _last_slot_crossed:
+		_last_slot_crossed = slots_passed
+		SoundManager.play_click()
 
 func make_item_slot(hero: Dictionary) -> Control:
 	var slot = PanelContainer.new()
