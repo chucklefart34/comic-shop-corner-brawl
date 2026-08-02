@@ -195,10 +195,9 @@ func execute_attack():
 		RunData.fight_index += 1
 		RunData.tokens += tokens_earned
 		SaveManager.add_currency(tokens_earned)
-		SaveManager.add_lifetime_win()
 		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
-		
+
 	# enemy turn
 	player_can_act = false
 	await get_tree().create_timer(0.6).timeout
@@ -237,6 +236,7 @@ func end_turn():
 
 # dying shit
 	if RunData.player_hp <= 0:
+		RunData.reset()
 		get_tree().change_scene_to_file("res://scenes/Death.tscn")
 		return
 
