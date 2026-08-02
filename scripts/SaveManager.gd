@@ -55,15 +55,9 @@ func load_game():
 		data["currency"] = 0
 	if not data.has("rebirth_count"):
 		data["rebirth_count"] = 0
-	if not data.has("lifetime_wins"):
-		data["lifetime_wins"] = 0
 	if not data.has("token_multiplier"):
 		data["token_multiplier"] = 1.0
  
-
-func add_lifetime_win():
-	data["lifetime_wins"] += 1
-	save_game()
 # -------------------------
 # RESET
 # -------------------------
@@ -73,10 +67,7 @@ func reset_game():
 		"deck": STARTING_HEROES.duplicate(),
 		"currency": 0,
 		"rebirth_count": 0,
-		"lifetime_wins": 0,
 		"token_multiplier": 1.0
-		
-		
 	}
 	save_game()
 # -------------------------
