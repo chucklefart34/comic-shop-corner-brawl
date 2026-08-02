@@ -81,8 +81,9 @@ stretch_mode = 5
 [node name="PackOpening" type="CanvasLayer" parent="." unique_id=551870965]
 
 [node name="DimBackground" type="ColorRect" parent="PackOpening" unique_id=1773804584]
-offset_right = 1151.0
-offset_bottom = 644.0
+offset_top = -4.0
+offset_right = 1158.0
+offset_bottom = 649.0
 color = Color(0, 0, 0, 0.80784315)
 
 [node name="ScrollClip" type="Control" parent="PackOpening" unique_id=1562130733]

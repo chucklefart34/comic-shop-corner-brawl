@@ -77,10 +77,9 @@ func _ready():
 func connect_button_sounds(node: Node):
 	for child in node.get_children():
 		if child is Button:
-			if not child.mouse_entered.is_connected(SoundManager.play_hover):
-				child.mouse_entered.connect(SoundManager.play_hover)
-			if not child.pressed.is_connected(SoundManager.play_click):
-				child.pressed.connect(SoundManager.play_click)
+			child.mouse_entered.connect(SoundManager.play_hover)
+			child.pressed.connect(SoundManager.play_click)
+
 		connect_button_sounds(child)
 
 # ----------------------------

@@ -32,7 +32,8 @@ func connect_button_sounds(node: Node):
 		if child is Button:
 			child.mouse_entered.connect(SoundManager.play_hover)
 			child.pressed.connect(SoundManager.play_click)
-		connect_button_sounds(child)  # recurse into children too
+			SoundManager.style_button_paper(child)  
+		connect_button_sounds(child)
 		
 	help_text.text = "HOW TO PLAY\n\n" + \
 		"Build a deck of heroes in your Collection.\n" + \
@@ -46,7 +47,6 @@ func connect_button_sounds(node: Node):
 		" "
 		
 	
-
 func _on_help_button_pressed():
 	help_panel.visible = true
 

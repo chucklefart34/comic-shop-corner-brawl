@@ -66,4 +66,5 @@ func connect_button_sounds(node: Node):
 		if child is Button:
 			child.mouse_entered.connect(SoundManager.play_hover)
 			child.pressed.connect(SoundManager.play_click)
-		connect_button_sounds(child)  # recurse into children too
+			SoundManager.style_button_paper(child)  
+		connect_button_sounds(child)
