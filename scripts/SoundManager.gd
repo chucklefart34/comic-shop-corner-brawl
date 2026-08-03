@@ -3,12 +3,12 @@ extends Node
 @onready var hover_player = AudioStreamPlayer.new()
 @onready var click_player = AudioStreamPlayer.new()
 
-var hover_sound = preload("res://Sounds/hover.ogg")
-var click_sound = preload("res://Sounds/click.ogg")
+var hover_sound = preload("res://sounds/hover.ogg")
+var click_sound = preload("res://sounds/click.ogg")
 
 var paper_white_texture = preload("res://picstures/white.png")
 var paper_grey_texture = preload("res://picstures/grey.png")
-var main_font = preload("res://Fonts/Schoolbell-Regular.ttf")
+var main_font = preload("res://fonts/Schoolbell-Regular.ttf")  
 
 func _ready():
 	add_child(hover_player)

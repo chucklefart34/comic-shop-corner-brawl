@@ -74,7 +74,7 @@ func _ready():
 func setup_hit_vignette():
 	var vignette_gradient = Gradient.new()
 	vignette_gradient.set_color(0, Color(1, 0, 0, 0))
-	vignette_gradient.set_color(1, Color(1, 0, 0, 1))
+	vignette_gradient.set_color(1, Color(0.365, 0.0, 0.0, 1.0))
 
 	var grad_tex = GradientTexture2D.new()
 	grad_tex.gradient = vignette_gradient

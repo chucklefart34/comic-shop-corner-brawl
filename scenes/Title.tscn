@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c8mdnb7kale0g" path="res://scripts/title.gd" id="1_c0dwi"]
 [ext_resource type="Texture2D" uid="uid://b0awh7tfcchsi" path="res://picstures/title.png" id="2_ax32a"]
 [ext_resource type="Script" uid="uid://d3ekf61pgoxxt" path="res://scripts/SoundManager.gd" id="3_aa56r"]
-[ext_resource type="AudioStream" uid="uid://dtcafniyt8wrr" path="res://Sounds/hover.ogg" id="4_aa56r"]
-[ext_resource type="AudioStream" uid="uid://cjmipxnagpjk4" path="res://Sounds/click.ogg" id="5_mh4yb"]
+[ext_resource type="AudioStream" uid="uid://dtcafniyt8wrr" path="res://sounds/hover.ogg" id="4_aa56r"]
+[ext_resource type="AudioStream" uid="uid://cjmipxnagpjk4" path="res://sounds/click.ogg" id="5_mh4yb"]
 
 [node name="Title" type="Control" unique_id=2103769830]
 layout_mode = 3
