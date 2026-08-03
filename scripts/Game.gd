@@ -170,26 +170,28 @@ func execute_attack():
 	if selected_attack == "":
 		return
 
+	player_can_act = false
+
 	var hero_id = hand[selected_hero_index]
 	var hero = HeroDataBase.heroes[hero_id]
 
-	var base_damage = 0
-
+	var roll_result: Dictionary
 	if selected_attack == "a":
-		base_damage = roll(hero["attack_a"])
+		roll_result = roll_with_details(hero["attack_a"])
 	else:
-		base_damage = roll(hero["attack_b"])
+		roll_result = roll_with_details(hero["attack_b"])
+
+	var base_damage = roll_result["total"]
+	var rolls = roll_result["rolls"]
 
 	var bonus = 0
-
-# Duplicate-based star bonus (persistent, from collection)
 	bonus += SaveManager.get_hero_attack_bonus(hero_id)
-
-# Run-based upgrade bonus (from Upgrade.tscn choices, if any)
 	if RunData.hero_upgrades.has(hero_id):
 		bonus += RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
 
 	var dmg = base_damage + bonus
+
+	await show_dice_animation(rolls, dmg, hero["display_name"] + "'s Attack!", Color(0.212, 0.544, 0.512, 1.0))
 
 	enemy_hp -= dmg
 	info_label.text = hero["display_name"] + " dealt " + str(dmg)
@@ -304,6 +306,7 @@ func update_ui():
 			SoundManager.style_button_paper(hero_buttons[i])
 func enemy_turn():
 	var dmg = randi_range(2, 6)
+	await show_dice_animation([dmg], dmg, "Enemy Attack!", Color(1.0, 0.35, 0.35))
 	RunData.player_hp -= dmg
 	flash_hit_vignette()
 	info_label.text = "Enemy deals " + str(dmg)
@@ -331,3 +334,86 @@ func flash_hit_vignette():
 	vignette.modulate.a = 0.7
 	var tween = create_tween()
 	tween.tween_property(vignette, "modulate:a", 0.0, 0.6)
+	
+	
+	#roll animation shitting
+	
+	
+func roll_with_details(arr: Array) -> Dictionary:
+	var rolls: Array = []
+	var total := 0
+	for x in arr:
+		var r = randi_range(1, x)
+		rolls.append(r)
+		total += r
+	return {"rolls": rolls, "total": total}
+	
+	
+func show_dice_animation(rolls: Array, total: int, title: String, accent_color: Color) -> void:
+	var center = CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(center)
+
+	var panel = PanelContainer.new()
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.05, 0.05, 0.05, 0.85)
+	style.set_border_width_all(3)
+	style.border_color = accent_color
+	style.set_corner_radius_all(10)
+	panel.add_theme_stylebox_override("panel", style)
+	center.add_child(panel)
+
+	var vbox = VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 8)
+	panel.add_child(vbox)
+
+	var title_label = Label.new()
+	title_label.text = title
+	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_label.add_theme_color_override("font_color", accent_color)
+	title_label.add_theme_font_size_override("font_size", 20)
+	vbox.add_child(title_label)
+
+	var dice_row = HBoxContainer.new()
+	dice_row.alignment = BoxContainer.ALIGNMENT_CENTER
+	dice_row.add_theme_constant_override("separation", 10)
+	vbox.add_child(dice_row)
+
+	var die_labels = []
+	for r in rolls:
+		var die_label = Label.new()
+		die_label.text = str(r)
+		die_label.add_theme_font_size_override("font_size", 28)
+		die_label.add_theme_color_override("font_color", Color.WHITE)
+		die_label.scale = Vector2.ZERO
+		dice_row.add_child(die_label)
+		die_labels.append(die_label)
+
+	var total_label = Label.new()
+	total_label.text = "Total: " + str(total)
+	total_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	total_label.add_theme_font_size_override("font_size", 24)
+	total_label.add_theme_color_override("font_color", accent_color)
+	total_label.modulate.a = 0.0
+	vbox.add_child(total_label)
+
+	for die_label in die_labels:
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(die_label, "scale", Vector2.ONE, 0.25)
+		SoundManager.play_click()
+		await get_tree().create_timer(0.2).timeout
+
+	var total_tween = create_tween()
+	total_tween.tween_property(total_label, "modulate:a", 1.0, 0.2)
+	await total_tween.finished
+
+	await get_tree().create_timer(0.5).timeout
+
+	var fade_tween = create_tween()
+	fade_tween.tween_property(center, "modulate:a", 0.0, 0.3)
+	await fade_tween.finished
+
+	center.queue_free()
