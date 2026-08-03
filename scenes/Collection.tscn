@@ -102,10 +102,10 @@ stretch_mode = 5
 
 [node name="ViewDeckButton" type="Button" parent="." unique_id=1330513295]
 layout_mode = 0
-offset_left = 1030.0
-offset_top = 242.0
-offset_right = 1117.0
-offset_bottom = 273.0
+offset_left = 353.0
+offset_top = 5.0
+offset_right = 440.0
+offset_bottom = 36.0
 scale = Vector2(1.3789959, 1.3974705)
 text = "View Deck"
 
@@ -130,9 +130,9 @@ columns = 5
 
 [node name="CloseDeckButton" type="Button" parent="DeckPanel" unique_id=1048577068]
 layout_mode = 0
-offset_left = 6.564191
-offset_top = 237.91246
-offset_right = 98.56419
-offset_bottom = 268.91248
+offset_left = -104.9506
+offset_top = 111.35066
+offset_right = -12.9506
+offset_bottom = 142.35068
 scale = Vector2(0.9352539, 1.3439198)
 text = "Close Deck"

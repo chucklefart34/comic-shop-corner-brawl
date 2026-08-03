@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qwjyv8tsd465"
-path="res://.godot/imported/hero18.png-f51ea17d65f018a139870861bdb042e6.ctex"
+uid="uid://3wg46a4c1h3e"
+path="res://.godot/imported/Hero18.png-19e1affd04212e9e0c26f8253ebdf5b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Portraits/hero18.png"
-dest_files=["res://.godot/imported/hero18.png-f51ea17d65f018a139870861bdb042e6.ctex"]
+source_file="res://Portraits/Hero18.png"
+dest_files=["res://.godot/imported/Hero18.png-19e1affd04212e9e0c26f8253ebdf5b2.ctex"]
 
 [params]
 
