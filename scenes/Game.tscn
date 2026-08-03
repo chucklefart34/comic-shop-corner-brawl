@@ -109,7 +109,7 @@ icon_alignment = 1
 [node name="AttackArea" type="HBoxContainer" parent="UI" unique_id=1476886037]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 6
 
 [node name="AttackAButton" type="Button" parent="UI/AttackArea" unique_id=860916527]
 layout_mode = 2

@@ -117,16 +117,16 @@ var heroes = {
 	},
 	"Hero17": {
 		"display_name": "SupraMan",
-		"rarity": "Common",
-		"attack_a": [3, 4, 4, 2],
-		"attack_b": [12],
+		"rarity": "Uncommon",
+		"attack_a": [3, 4, 4, 5],
+		"attack_b": [17],
 		"attack_bonus": 0
 	},
 	"Hero18": {
-		"display_name": "Big Green Genius", 
-		"rarity": "Common",
-		"attack_a": [2, 3, 4, 4],
-		"attack_b": [13],
+		"display_name": "Big Green Genius",
+		"rarity": "Uncommon",
+		"attack_a": [3, 4, 5, 5],
+		"attack_b": [16],
 		"attack_bonus": 0
 	},
 	"Hero19": {
