@@ -31,9 +31,9 @@ jobs:
     - name: Create build directory
       run: mkdir -p build
 
-    - name: Export iOS project
-      run: godot --headless --export-release "iOS" build/comicshopcornerbrawl.ipa
-      env:
+    - - name: Export iOS project
+        run: godot --headless --export-release "iOS" build/your_project_name.xcodeproj
+        env:
         DISPLAY: :99.0
 
     - name: Set iOS Deployment Target
