@@ -15,57 +15,57 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ReturnButton" type="Button" parent="." unique_id=1286176144]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 997.0
-offset_right = 84.0
-offset_bottom = 1028.0
-scale = Vector2(1.8678151, 1.844518)
+offset_left = 18.0
+offset_top = 650.00006
+offset_right = 80.0
+offset_bottom = 681.00006
+scale = Vector2(1.4200971, 1.7361447)
 text = "Return"
 
 [node name="BuyPackButton" type="Button" parent="." unique_id=2134804837]
 layout_mode = 0
-offset_left = 854.0
-offset_top = 612.0
-offset_right = 932.0
-offset_bottom = 643.0
-scale = Vector2(1.6750948, 2.0319655)
+offset_left = 558.0
+offset_top = 475.0
+offset_right = 636.0
+offset_bottom = 506.0
+scale = Vector2(1.6141974, 1.7724433)
 text = "Buy Pack"
 
 [node name="HeroNameLabel" type="Label" parent="." unique_id=36166419]
 layout_mode = 0
-offset_left = 862.0
-offset_top = 848.0
-offset_right = 981.0
-offset_bottom = 906.0
+offset_left = 528.0
+offset_top = 526.0
+offset_right = 647.0
+offset_bottom = 584.0
 
 [node name="HeroRarityLabel" type="Label" parent="." unique_id=947683731]
 layout_mode = 0
-offset_left = 831.0
-offset_top = 751.0
-offset_right = 967.0
-offset_bottom = 826.0
+offset_left = 518.0
+offset_top = 464.0
+offset_right = 654.0
+offset_bottom = 539.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=891485548]
 z_index = -1000
-position = Vector2(955.00006, 516)
-scale = Vector2(1.0273623, 1.0603998)
+position = Vector2(639, 363.00003)
+scale = Vector2(0.66804224, 0.6728505)
 texture = ExtResource("2_lw67d")
 
 [node name="CurrencyLabel" type="Label" parent="." unique_id=643748518]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 21.0
-offset_right = 246.0
-offset_bottom = 133.0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 222.0
+offset_bottom = 127.0
 text = "Tokens: "
 
 [node name="RebirthButton" type="Button" parent="." unique_id=645556760]
 layout_mode = 0
-offset_left = 1736.0
-offset_top = 1020.0
-offset_right = 1802.0
-offset_bottom = 1051.0
-scale = Vector2(2.2266092, 1.5201751)
+offset_left = 1145.0001
+offset_top = 659.0
+offset_right = 1211.0001
+offset_bottom = 690.0
+scale = Vector2(1.7752744, 1.3467249)
 text = "Rebirth"
 
 [node name="RebirthConfirmDialog" type="ConfirmationDialog" parent="." unique_id=819493990]
@@ -75,21 +75,21 @@ Are you sure?"
 
 [node name="HeroPortraitRect" type="TextureRect" parent="." unique_id=1713107673]
 layout_mode = 0
-offset_left = 762.0
-offset_top = 242.0
-offset_right = 966.0
-offset_bottom = 438.0
-scale = Vector2(1.5175954, 1.6053587)
+offset_left = 507.0
+offset_top = 202.0
+offset_right = 711.0
+offset_bottom = 398.0
+scale = Vector2(1.0412169, 1.1119344)
 expand_mode = 1
 stretch_mode = 5
 
 [node name="PackOpening" type="CanvasLayer" parent="." unique_id=551870965]
 
 [node name="DimBackground" type="ColorRect" parent="PackOpening" unique_id=1773804584]
-offset_left = -7.0
-offset_top = -21.0
-offset_right = 1151.0
-offset_bottom = 632.0
+offset_left = -151.0
+offset_top = -75.0
+offset_right = 1007.0
+offset_bottom = 578.0
 scale = Vector2(1.6720632, 1.7513758)
 color = Color(0, 0, 0, 0.80784315)
 
@@ -97,10 +97,11 @@ color = Color(0, 0, 0, 0.80784315)
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_top = 223.00002
-offset_right = 1146.0
-offset_bottom = 407.0
-scale = Vector2(1.6692309, 1.8930773)
+offset_left = -242.0
+offset_top = 150.0
+offset_right = 904.0
+offset_bottom = 333.99997
+scale = Vector2(1.5548508, 1.5911646)
 
 [node name="ItemStrip" type="HBoxContainer" parent="PackOpening/ScrollClip" unique_id=763342961]
 layout_mode = 0

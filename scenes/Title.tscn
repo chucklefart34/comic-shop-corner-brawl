@@ -11,8 +11,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 2.0
+offset_left = 64.0
+offset_top = -10.0
+offset_right = 64.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c0dwi")
@@ -20,60 +22,60 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TitleLabel" type="Label" parent="." unique_id=518155653]
 layout_mode = 0
-offset_left = 1401.0
-offset_top = 208.0
-offset_right = 1598.0
-offset_bottom = 231.0
+offset_left = 1048.0
+offset_top = -45.0
+offset_right = 1245.0
+offset_bottom = -22.0
 
 [node name="PlayButton" type="Button" parent="." unique_id=1646482762]
 layout_mode = 0
-offset_left = 858.0
-offset_top = 650.0
-offset_right = 899.0
-offset_bottom = 681.0
-scale = Vector2(2.0675132, 1.9900459)
+offset_left = 505.0
+offset_top = 397.0
+offset_right = 546.0
+offset_bottom = 428.0
+scale = Vector2(1.8549768, 1.5935825)
 text = "Play"
 
 [node name="CollectionButton" type="Button" parent="." unique_id=323997555]
 layout_mode = 0
-offset_left = 843.0
-offset_top = 731.00006
-offset_right = 926.0
-offset_bottom = 762.00006
-scale = Vector2(1.4846851, 2.0652602)
+offset_left = 489.99997
+offset_top = 478.00006
+offset_right = 573.0
+offset_bottom = 509.00006
+scale = Vector2(1.4123898, 1.4759477)
 text = "collection"
 
 [node name="StoreButton" type="Button" parent="." unique_id=888331312]
 layout_mode = 0
-offset_left = 851.0
-offset_top = 812.0
-offset_right = 934.0
-offset_bottom = 843.0
-scale = Vector2(1.2492412, 1.8745129)
+offset_left = 498.00003
+offset_top = 559.0
+offset_right = 581.0
+offset_bottom = 590.0
+scale = Vector2(1.273977, 1.4990975)
 text = "Store"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239574583]
 z_index = -100
-position = Vector2(959, 542)
-scale = Vector2(1.018191, 1.0461239)
+position = Vector2(577, 386)
+scale = Vector2(0.67804563, 0.7484804)
 texture = ExtResource("2_ax32a")
 
 [node name="HelpButton" type="Button" parent="." unique_id=781902161]
 layout_mode = 0
-offset_left = 854.0
-offset_top = 885.0
-offset_right = 898.0
-offset_bottom = 916.0
-scale = Vector2(2.1477761, 1.607714)
+offset_left = 507.0
+offset_top = 663.00006
+offset_right = 551.0
+offset_bottom = 694.00006
+scale = Vector2(1.9989402, 1.3860621)
 text = "Help"
 
 [node name="HelpPanel" type="Panel" parent="." unique_id=1309630667]
 layout_mode = 0
-offset_left = 1297.0
-offset_top = 640.0
-offset_right = 1766.0
-offset_bottom = 978.0
-scale = Vector2(1.3292702, 1.3058542)
+offset_left = 642.0
+offset_top = 370.99997
+offset_right = 1111.0
+offset_bottom = 709.0
+scale = Vector2(1.2226226, 1.0648612)
 
 [node name="CloseHelpButton" type="Button" parent="HelpPanel" unique_id=1493927087]
 layout_mode = 0

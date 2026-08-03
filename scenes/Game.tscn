@@ -133,6 +133,6 @@ vertical_icon_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759838696]
 z_index = -1000
-position = Vector2(953, 501)
-scale = Vector2(1.0532525, 1.0741205)
+position = Vector2(615, 402.00003)
+scale = Vector2(0.76350904, 0.8042111)
 texture = ExtResource("2_xkndl")

@@ -8,6 +8,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5xa6")
@@ -15,11 +19,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=386809299]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 485.0
-offset_right = 1152.0
-offset_bottom = 847.0
-scale = Vector2(1.0055951, 1.5787002)
+offset_left = 6.0000005
+offset_top = 322.0
+offset_right = 1155.0
+offset_bottom = 684.0
+scale = Vector2(1.1140814, 1.1107615)
 
 [node name="HeroGrid" type="GridContainer" parent="ScrollContainer" unique_id=1307845000]
 layout_mode = 2
@@ -31,22 +35,22 @@ offset_left = 12.0
 offset_top = 14.0
 offset_right = 94.0
 offset_bottom = 82.0
-scale = Vector2(1.8679295, 1.839509)
+scale = Vector2(1.161355, 1.0787979)
 text = "Return"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=273307062]
 z_index = -1000
-position = Vector2(968, 546)
-scale = Vector2(1.020193, 1.004948)
+position = Vector2(643, 356)
+scale = Vector2(0.69879556, 0.7097221)
 texture = ExtResource("2_r1s44")
 
 [node name="DetailPanel" type="Panel" parent="." unique_id=879830017]
 layout_mode = 0
-offset_left = 1161.0
-offset_top = 6.0
-offset_right = 1610.0
-offset_bottom = 643.0
-scale = Vector2(1.6572106, 1.6511256)
+offset_left = 632.9999
+offset_top = -6.0
+offset_right = 1081.9999
+offset_bottom = 631.0
+scale = Vector2(1.3907936, 1.0995177)
 
 [node name="NameLabel" type="Label" parent="DetailPanel" unique_id=1583011055]
 layout_mode = 0
@@ -98,20 +102,20 @@ stretch_mode = 5
 
 [node name="ViewDeckButton" type="Button" parent="." unique_id=1330513295]
 layout_mode = 0
-offset_left = 952.0
-offset_top = 407.0
-offset_right = 1039.0
-offset_bottom = 438.0
-scale = Vector2(1.8727812, 1.9600062)
+offset_left = 1030.0
+offset_top = 242.0
+offset_right = 1117.0
+offset_bottom = 273.0
+scale = Vector2(1.3789959, 1.3974705)
 text = "View Deck"
 
 [node name="DeckPanel" type="Panel" parent="." unique_id=623704733]
 layout_mode = 0
-offset_left = 733.0
-offset_top = 12.0
-offset_right = 1439.0
-offset_bottom = 234.0
-scale = Vector2(1.6757629, 1.6518682)
+offset_left = 489.00006
+offset_top = -27.000004
+offset_right = 1195.0
+offset_bottom = 195.0
+scale = Vector2(1.1148107, 1.1764637)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DeckPanel" unique_id=2065607704]
 layout_mode = 0
