@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
 script = ExtResource("1_wbfu4")
+metadata/_edit_use_anchors_ = true
 
 [node name="HitVignette" type="TextureRect" parent="." unique_id=1384913136]
 layout_mode = 1
@@ -32,8 +33,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 68.0
-offset_bottom = 68.0
+offset_left = 5.9999995
+offset_top = 34.0
+offset_right = 6.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.994529, 1.003595)
@@ -46,7 +49,7 @@ layout_mode = 2
 
 [node name="HPLabel" type="Label" parent="UI/TopBar" unique_id=911848411]
 layout_mode = 2
-text = "𝙃𝙋:"
+text = "HP:"
 
 [node name="FightLabel" type="Label" parent="UI/TopBar" unique_id=829767931]
 layout_mode = 2
@@ -79,7 +82,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
-text = "𝙀𝙣𝙚𝙢𝙮 𝙃𝙋:"
+text = "Enemy HP:"
 horizontal_alignment = 2
 
 [node name="InfoLabel" type="Label" parent="UI" unique_id=592066926]
@@ -133,6 +136,6 @@ vertical_icon_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759838696]
 z_index = -1000
-position = Vector2(576, 323.00003)
-scale = Vector2(0.6, 0.59999996)
+position = Vector2(953, 501)
+scale = Vector2(1.0532525, 1.0741205)
 texture = ExtResource("2_xkndl")

@@ -11,13 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5xa6")
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=386809299]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 284.0
-offset_right = 1150.0
-offset_bottom = 646.0
+offset_left = 3.0
+offset_top = 485.0
+offset_right = 1152.0
+offset_bottom = 847.0
+scale = Vector2(1.0055951, 1.5787002)
 
 [node name="HeroGrid" type="GridContainer" parent="ScrollContainer" unique_id=1307845000]
 layout_mode = 2
@@ -26,23 +28,25 @@ columns = 4
 [node name="ReturnButton" type="Button" parent="." unique_id=551151019]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 16.0
+offset_top = 14.0
 offset_right = 94.0
-offset_bottom = 84.0
+offset_bottom = 82.0
+scale = Vector2(1.8679295, 1.839509)
 text = "Return"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=273307062]
 z_index = -1000
-position = Vector2(577, 324.00003)
-scale = Vector2(0.5989583, 0.5972222)
+position = Vector2(968, 546)
+scale = Vector2(1.020193, 1.004948)
 texture = ExtResource("2_r1s44")
 
 [node name="DetailPanel" type="Panel" parent="." unique_id=879830017]
 layout_mode = 0
-offset_left = 587.0
-offset_top = -3.0
-offset_right = 1036.0
-offset_bottom = 634.0
+offset_left = 1161.0
+offset_top = 6.0
+offset_right = 1610.0
+offset_bottom = 643.0
+scale = Vector2(1.6572106, 1.6511256)
 
 [node name="NameLabel" type="Label" parent="DetailPanel" unique_id=1583011055]
 layout_mode = 0
@@ -70,18 +74,18 @@ text = "Add to deck"
 
 [node name="BackButton" type="Button" parent="DetailPanel" unique_id=158125520]
 layout_mode = 0
-offset_left = 466.0
-offset_top = 288.0
-offset_right = 511.0
-offset_bottom = 319.0
+offset_left = 403.6904
+offset_top = 238.62509
+offset_right = 448.6904
+offset_bottom = 269.6251
 text = "Hide"
 
 [node name="AnnounceLabel" type="Label" parent="DetailPanel" unique_id=1908805144]
 layout_mode = 0
-offset_left = 540.0
-offset_top = -16.0
-offset_right = 1043.0
-offset_bottom = 123.0
+offset_left = -702.9885
+offset_top = -4.2395325
+offset_right = -199.98853
+offset_bottom = 134.76047
 
 [node name="PortraitRect" type="TextureRect" parent="DetailPanel" unique_id=1412629606]
 layout_mode = 0
@@ -94,18 +98,20 @@ stretch_mode = 5
 
 [node name="ViewDeckButton" type="Button" parent="." unique_id=1330513295]
 layout_mode = 0
-offset_left = 1042.0
-offset_top = 244.0
-offset_right = 1129.0
-offset_bottom = 275.0
+offset_left = 952.0
+offset_top = 407.0
+offset_right = 1039.0
+offset_bottom = 438.0
+scale = Vector2(1.8727812, 1.9600062)
 text = "View Deck"
 
 [node name="DeckPanel" type="Panel" parent="." unique_id=623704733]
 layout_mode = 0
-offset_left = 444.0
-offset_top = 6.0
-offset_right = 1150.0
-offset_bottom = 228.0
+offset_left = 733.0
+offset_top = 12.0
+offset_right = 1439.0
+offset_bottom = 234.0
+scale = Vector2(1.6757629, 1.6518682)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DeckPanel" unique_id=2065607704]
 layout_mode = 0
@@ -120,8 +126,9 @@ columns = 5
 
 [node name="CloseDeckButton" type="Button" parent="DeckPanel" unique_id=1048577068]
 layout_mode = 0
-offset_left = -108.0
-offset_top = 177.0
-offset_right = -16.0
-offset_bottom = 208.0
+offset_left = 6.564191
+offset_top = 237.91246
+offset_right = 98.56419
+offset_bottom = 268.91248
+scale = Vector2(0.9352539, 1.3439198)
 text = "Close Deck"
