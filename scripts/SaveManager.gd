@@ -145,11 +145,11 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 	
 	
 #rebirth shit
-var REBIRTH_THRESHOLD: int = 1000 * (1.25 * data.rebirth_count)  # tune this 
+ 
 const STARTING_HEROES := ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"]
 
 func get_rebirth_threshold() -> int:
-	return int(1000 * (1.25 * data.rebirth_count))
+	return int(1000 * (1.25 * (data.rebirth_count + 1)))
 
 func can_rebirth() -> bool:
 	return data["currency"] >= get_rebirth_threshold()
