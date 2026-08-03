@@ -32,19 +32,19 @@ jobs:
       run: mkdir -p build
 
     - name: Export iOS project
-      run: godot --headless --export-release "iOS" build/your_project_name.ipa
+      run: godot --headless --export-release "iOS" build/comicshopcornerbrawl.ipa
       env:
         DISPLAY: :99.0
 
     - name: Set iOS Deployment Target
-      run: sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10.0;/IPHONEOS_DEPLOYMENT_TARGET = 12.0;/' build/your_project_name.xcodeproj/project.pbxproj
+      run: sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10.0;/IPHONEOS_DEPLOYMENT_TARGET = 12.0;/' build/comicshopcornerbrawl.xcodeproj/project.pbxproj
 
     - name: Build iOS project
       run: |
-        xcodebuild -project build/your_project_name.xcodeproj \
-          -scheme your_project_name \
+        xcodebuild -project build/comicshopcornerbrawl.xcodeproj \
+          -scheme comicshopcornerbrawl \
           -configuration Development \
-          -archivePath build/your_project_name.xcarchive \
+          -archivePath build/comicshopcornerbrawl.xcarchive \
           archive \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
