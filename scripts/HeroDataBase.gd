@@ -109,105 +109,105 @@ var heroes = {
 		"attack_bonus": 0
 	},
 	"Hero16": {
-		"display_name": "Green Bug", #blue beetle
+		"display_name": "Green Bug", 
 		"rarity": "Common",
 		"attack_a": [3, 3, 3, 3],
 		"attack_b": [13],
 		"attack_bonus": 0
 	},
 	"Hero17": {
-		"display_name": "SupraMan", #omniman
+		"display_name": "SupraMan",
 		"rarity": "Common",
 		"attack_a": [3, 4, 4, 2],
 		"attack_b": [12],
 		"attack_bonus": 0
 	},
 	"Hero18": {
-		"display_name": "Big Green Genius", #hulk
+		"display_name": "Big Green Genius", 
 		"rarity": "Common",
 		"attack_a": [2, 3, 4, 4],
 		"attack_b": [13],
 		"attack_bonus": 0
 	},
 	"Hero19": {
-		"display_name": "ThunderBoy", #thor
+		"display_name": "ThunderBoy", 
 		"rarity": "Common",
 		"attack_a": [2, 3, 3, 3],
 		"attack_b": [14],
 		"attack_bonus": 0
 	},
 	"Hero20": {
-		"display_name": "Smart Rich Suit", #iron man
+		"display_name": "Smart Rich Suit", 
 		"rarity": "Common",
 		"attack_a": [3, 3, 4, 2],
 		"attack_b": [12],
 		"attack_bonus": 0
 	},
 	"Hero21": {
-		"display_name": "Spider Agent", #black widow
+		"display_name": "Spider Agent", 
 		"rarity": "Common",
 		"attack_a": [2, 2, 3, 2],
 		"attack_b": [13],
 		"attack_bonus": 0
 	},
 	"Hero22": {
-		"display_name": "Target", #hawkeye
+		"display_name": "Target",
 		"rarity": "Common",
 		"attack_a": [3, 3, 3, 2],
 		"attack_b": [13],
 		"attack_bonus": 0
 	},
 	"Hero23": {
-		"display_name": "Olive Bowson", #green arrow 
+		"display_name": "Olive Bowson", 
 		"rarity": "Common",
 		"attack_a": [2, 3, 4, 2],
 		"attack_b": [12],
 		"attack_bonus": 0
 	},
 	"Hero24": {
-		"display_name": "General Nation", #captain america
+		"display_name": "General Nation",
 		"rarity": "Common",
 		"attack_a": [3, 4, 4, 2],
 		"attack_b": [11],
 		"attack_bonus": 0
 	},
 	"Hero25": {
-		"display_name": "Half-Robot", #cyborg
+		"display_name": "Half-Robot", 
 		"rarity": "Common",
 		"attack_a": [3, 3, 3, 2],
 		"attack_b": [13],
 		"attack_bonus": 0
 	},
 	"Hero26": {
-		"display_name": "WaterKing", #aquaman
-		"rarity": "Common",
-		"attack_a": [2, 3, 3, 2],
-		"attack_b": [14],
-		"attack_bonus": 0
-	},
-	"Hero27": {
-		"display_name": "Green Ring", #green lantern
+		"display_name": "Green Ring", 
 		"rarity": "Common",
 		"attack_a": [3, 3, 4, 2],
 		"attack_b": [12],
 		"attack_bonus": 0
 	},
+	"Hero27": {
+		"display_name": "WaterKing", 
+		"rarity": "Common",
+		"attack_a": [2, 3, 3, 2],
+		"attack_b": [14],
+		"attack_bonus": 0
+	},
 	"Hero28": {
-		"display_name": "Hondis Integrity", #Integra
+		"display_name": "Hondis Integrity", 
 		"rarity": "Legendary",
 		"attack_a": [16, 16, 16, 15],
 		"attack_b": [60],
 		"attack_bonus": 0
 	},
 	"Hero29": {
-		"display_name": "Toying Carrol", #corolla
+		"display_name": "Toying Carrol", 
 		"rarity": "Epic",
 		"attack_a": [10, 10, 10, 7],
 		"attack_b": [38],
 		"attack_bonus": 0
 	},
 	"Hero30": {
-		"display_name": "Hondis seevic", #honda civic
+		"display_name": "Hondis seevic", 
 		"rarity": "Rare",
 		"attack_a": [5, 6, 7, 4],
 		"attack_b": [25],
