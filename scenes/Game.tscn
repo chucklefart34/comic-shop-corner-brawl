@@ -15,6 +15,18 @@ grow_vertical = 2
 offset_transform_enabled = true
 script = ExtResource("1_wbfu4")
 
+[node name="HitVignette" type="TextureRect" parent="." unique_id=1384913136]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+
 [node name="UI" type="VBoxContainer" parent="." unique_id=788553722]
 layout_mode = 1
 anchors_preset = 15
@@ -24,6 +36,7 @@ offset_top = 68.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.994529, 1.003595)
 offset_transform_enabled = true
 accessibility_region = true
 alignment = 1

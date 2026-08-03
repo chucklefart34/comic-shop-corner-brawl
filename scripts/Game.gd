@@ -43,7 +43,8 @@ var enemy_max_hp: int = 0
 func _ready():
 	randomize()
 	connect_button_sounds(self)
-	
+	setup_hit_vignette()
+
 	deck = RunData.deck.duplicate()
 	deck.shuffle()
 
@@ -52,10 +53,7 @@ func _ready():
 		btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
 		btn.custom_minimum_size = Vector2(140, 180)
-	
 
-	
-		
 	start_fight()
 
 	for i in hero_buttons.size():
@@ -71,8 +69,24 @@ func _ready():
 		execute_attack()
 	)
 	end_turn_btn.pressed.connect(end_turn)
-	
 
+
+func setup_hit_vignette():
+	var vignette_gradient = Gradient.new()
+	vignette_gradient.set_color(0, Color(1, 0, 0, 0))
+	vignette_gradient.set_color(1, Color(1, 0, 0, 1))
+
+	var grad_tex = GradientTexture2D.new()
+	grad_tex.gradient = vignette_gradient
+	grad_tex.fill = GradientTexture2D.FILL_RADIAL
+	grad_tex.fill_from = Vector2(0.5, 0.5)
+	grad_tex.fill_to = Vector2(1.0, 1.0)
+	grad_tex.width = 512
+	grad_tex.height = 512
+
+	$HitVignette.texture = grad_tex
+	$HitVignette.modulate.a = 0.0
+	
 
 func connect_button_sounds(node: Node):
 	for child in node.get_children():
@@ -235,6 +249,7 @@ func win_fight():
 func end_turn():
 	var dmg = randi_range(2, 6)
 	RunData.player_hp -= dmg
+	flash_hit_vignette()   
 
 # dying shit
 	if RunData.player_hp <= 0:
@@ -290,7 +305,7 @@ func update_ui():
 func enemy_turn():
 	var dmg = randi_range(2, 6)
 	RunData.player_hp -= dmg
-
+	flash_hit_vignette()
 	info_label.text = "Enemy deals " + str(dmg)
 
 	if RunData.player_hp <= 0:
@@ -311,3 +326,8 @@ func start_player_turn():
 
 	update_ui()
 	
+func flash_hit_vignette():
+	var vignette = $HitVignette
+	vignette.modulate.a = 0.7
+	var tween = create_tween()
+	tween.tween_property(vignette, "modulate:a", 0.0, 0.6)
