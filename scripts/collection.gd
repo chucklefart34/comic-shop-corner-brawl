@@ -180,7 +180,7 @@ func _on_deck_button_pressed():
 	
 	if selected_hero == "":
 		return
-
+	
 	if SaveManager.hero_in_deck(selected_hero):
 		if !SaveManager.remove_from_deck(selected_hero):
 			announce_label.text = "Deck needs at least " + str(SaveManager.MIN_DECK_SIZE) + " cards!"
@@ -193,8 +193,7 @@ func _on_deck_button_pressed():
 
 	show_hero(selected_hero)
 	build_collection()
-
-	show_hero(selected_hero)
-	build_collection()
+	build_deck_panel() 
+	
 	
 	
