@@ -206,7 +206,7 @@ func execute_attack():
 		discard.append(hero_id)
 		hand.remove_at(selected_hero_index)
 		var tokens_earned = calculate_token_reward()
-		tokens_earned = int(tokens_earned * (10.0 + SaveManager.get_skill_token_bonus()))
+		tokens_earned = int(tokens_earned * (1.0 + SaveManager.get_skill_token_bonus()))
 		RunData.battles_won += 1
 		RunData.fight_index += 1
 		RunData.tokens += tokens_earned
