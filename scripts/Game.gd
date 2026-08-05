@@ -10,7 +10,7 @@ var player_can_act := true
 
 var selected_hero_index: int = -1
 var selected_attack: String = ""
-
+var used_hero_index: int = -1
 var enemy_hp: int = 0
 var enemy_max_hp: int = 0
 
@@ -142,13 +142,14 @@ func draw_to_hand(target: int):
 # HERO SELECTION
 # ----------------------------
 func select_hero(index: int):
+	if not player_can_act:
+		return
 	if index >= hand.size():
 		return
 
 	selected_hero_index = index
 	info_label.text = "Selected: " + HeroDataBase.heroes[hand[index]]["display_name"]
-
-
+	
 # ----------------------------
 # ATTACK SELECTION
 # ----------------------------
@@ -171,7 +172,10 @@ func execute_attack():
 		return
 
 	player_can_act = false
-
+	for btn in hero_buttons:
+		btn.disabled = true
+		btn.modulate = Color(0.5, 0.5, 0.5)
+		
 	var hero_id = hand[selected_hero_index]
 	var hero = HeroDataBase.heroes[hero_id]
 
@@ -186,6 +190,7 @@ func execute_attack():
 
 	var bonus = 0
 	bonus += SaveManager.get_hero_attack_bonus(hero_id)
+	bonus += SaveManager.get_skill_attack_bonus() 
 	if RunData.hero_upgrades.has(hero_id):
 		bonus += RunData.hero_upgrades[hero_id].get("attack_bonus", 0)
 
@@ -195,27 +200,20 @@ func execute_attack():
 
 	enemy_hp -= dmg
 	info_label.text = hero["display_name"] + " dealt " + str(dmg)
-
-	# discard
-	discard.append(hero_id)
-	hand.remove_at(selected_hero_index)
-
-	selected_hero_index = -1
-	selected_attack = ""
-
-	draw_to_hand(3)
-	update_ui()
-
+	
 	# WIN CHECK
 	if enemy_hp <= 0:
+		discard.append(hero_id)
+		hand.remove_at(selected_hero_index)
 		var tokens_earned = calculate_token_reward()
+		tokens_earned = int(tokens_earned * (10.0 + SaveManager.get_skill_token_bonus()))
 		RunData.battles_won += 1
 		RunData.fight_index += 1
 		RunData.tokens += tokens_earned
 		SaveManager.add_currency(tokens_earned)
 		get_tree().change_scene_to_file("res://scenes/Upgrade.tscn")
 		return
-
+		
 	# enemy turn
 	player_can_act = false
 	await get_tree().create_timer(0.6).timeout
@@ -282,7 +280,11 @@ func update_ui():
 	token_label.text = "Tokens: " + str(RunData.tokens)
 
 	for i in hero_buttons.size():
+		hero_buttons[i].disabled = false
+		hero_buttons[i].modulate = Color(1, 1, 1)
+
 		if i < hand.size():
+		
 			var id = hand[i]
 			var hero = HeroDataBase.heroes[id]
 			
@@ -316,11 +318,18 @@ func enemy_turn():
 		get_tree().change_scene_to_file("res://scenes/Death.tscn")
 		return
 
-	start_player_turn()
+	var hero_id = hand[selected_hero_index]
+	discard.append(hero_id)
+	hand.remove_at(selected_hero_index)
+	draw_to_hand(3)
 
+	start_player_turn()
 
 func start_player_turn():
 	player_can_act = true
+
+	for btn in hero_buttons:
+		btn.modulate = Color(1, 1, 1)
 
 	selected_hero_index = -1
 	selected_attack = ""

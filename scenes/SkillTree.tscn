@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://gwpx1l4g7isy"]
+
+[ext_resource type="Script" uid="uid://dwuc1dod1i6o4" path="res://scenes/SkillTree.gd" id="1_4hlmh"]
+
+[node name="SkillTree" type="Control" unique_id=329242535]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4hlmh")
+
+[node name="TokenLabel" type="Label" parent="." unique_id=1277505476]
+layout_mode = 0
+offset_left = 931.0
+offset_top = 669.0
+offset_right = 971.0
+offset_bottom = 692.0
+
+[node name="ReturnButton" type="Button" parent="." unique_id=1147852841]
+layout_mode = 0
+offset_left = 419.0
+offset_top = 658.0
+offset_right = 481.0
+offset_bottom = 689.0
+text = "Return"
+
+[node name="ContentLayer" type="Control" parent="." unique_id=2004768025]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LinesLayer" type="Control" parent="ContentLayer" unique_id=152885058]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NodesLayer" type="Control" parent="ContentLayer" unique_id=1638297127]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InfoLabel" type="Label" parent="." unique_id=60702171]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 42.0
+offset_right = 64.999985
+offset_bottom = 65.0
+scale = Vector2(1.5474015, 1.932426)

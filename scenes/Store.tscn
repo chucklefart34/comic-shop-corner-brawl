@@ -70,7 +70,7 @@ text = "Rebirth"
 
 [node name="RebirthConfirmDialog" type="ConfirmationDialog" parent="." unique_id=819493990]
 dialog_text = "Rebirthing will reset your tokens, heroes, and deck.
-You'll gain a permanent x1.5 token multiplier.
+You'll gain a permanent x1.5 token multiplier, and 1 skill point.
 Are you sure?"
 
 [node name="HeroPortraitRect" type="TextureRect" parent="." unique_id=1713107673]
@@ -116,3 +116,62 @@ offset_left = 549.0
 offset_top = -142.0
 offset_right = 553.0
 offset_bottom = 551.0
+
+[node name="SkillTreeButton" type="Button" parent="." unique_id=1502612477]
+layout_mode = 0
+offset_left = 1147.0
+offset_top = 539.00006
+offset_right = 1225.0
+offset_bottom = 570.00006
+scale = Vector2(1.4218392, 1.4872943)
+text = "Skill Tree"
+
+[node name="Open5Button" type="Button" parent="." unique_id=1792556538]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 560.0
+offset_right = 678.0
+offset_bottom = 591.0
+scale = Vector2(1.0583411, 1.3999064)
+text = "Open 5 Packs"
+
+[node name="Open10Button" type="Button" parent="." unique_id=118304186]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 637.0
+offset_right = 682.0
+offset_bottom = 668.0
+scale = Vector2(1.0209029, 1.324435)
+text = "Open 10 Packs"
+
+[node name="MultiPackOpening" type="Control" parent="." unique_id=83922840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DimBackground" type="ColorRect" parent="MultiPackOpening" unique_id=1892721498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6720632, 1.7513758)
+color = Color(0, 0, 0, 0.80784315)
+
+[node name="ScrollContainer" type="Control" parent="MultiPackOpening" unique_id=1848095125]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LanesContainer" type="VBoxContainer" parent="MultiPackOpening/ScrollContainer" unique_id=8195351]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.1992927, 0.5153487)

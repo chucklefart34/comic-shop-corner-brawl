@@ -21,7 +21,7 @@ var heroes = {
 		"display_name": "Rascal",
 		"rarity": "Legendary",
 		"attack_a": [16, 16, 16],
-		"attack_b": [62],
+		"attack_b": [80],
 		"attack_bonus": 0
 	},
 	"Hero4": {
@@ -91,7 +91,7 @@ var heroes = {
 		"display_name": "Robin steel",
 		"rarity": "Legendary",
 		"attack_a": [15, 16, 17],
-		"attack_b": [64],
+		"attack_b": [83],
 		"attack_bonus": 0
 	},
 	"Hero14": {
@@ -126,7 +126,7 @@ var heroes = {
 		"display_name": "Big Green Genius",
 		"rarity": "Uncommon",
 		"attack_a": [3, 4, 5],
-		"attack_b": [16],
+		"attack_b": [18],
 		"attack_bonus": 0
 	},
 	"Hero19": {
@@ -196,7 +196,7 @@ var heroes = {
 		"display_name": "Hondis Integrity",
 		"rarity": "Legendary",
 		"attack_a": [16, 16, 16],
-		"attack_b": [60],
+		"attack_b": [90],
 		"attack_bonus": 0
 	},
 	"Hero29": {
