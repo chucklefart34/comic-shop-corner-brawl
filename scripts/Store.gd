@@ -376,5 +376,5 @@ func roll_rarity():
 		return "Rare"
 	elif roll <= 99:
 		return "Epic"
-	else:
+	elif roll <= 100:
 		return "Legendary"
