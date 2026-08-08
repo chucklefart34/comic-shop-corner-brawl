@@ -92,6 +92,13 @@ offset_top = 1.0
 offset_right = 462.0
 offset_bottom = 334.0
 
+[node name="MultiButton" type="Button" parent="HelpPanel" unique_id=1866925297]
+layout_mode = 0
+offset_left = -1.6358278
+offset_top = 312.71686
+offset_right = 33.534462
+offset_bottom = 339.01138
+
 [node name="SoundManager" type="Node2D" parent="." unique_id=671370362]
 script = ExtResource("3_aa56r")
 

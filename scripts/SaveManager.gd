@@ -190,14 +190,16 @@ func get_hero_copies(hero_id: String) -> int:
 
 func get_hero_star_level(hero_id: String) -> int:
 	var copies = get_hero_copies(hero_id)
+	var reduction = get_skill_duplicate_bonus()
 	var stars := 0
 	for threshold in STAR_THRESHOLDS:
-		if copies >= threshold:
+		var adjusted_threshold = max(int(threshold * (1.0 - reduction)), 1)
+		if copies >= adjusted_threshold:
 			stars += 1
 		else:
 			break
 	return stars
-
+	
 func get_hero_attack_bonus(hero_id: String) -> int:
 	return get_hero_star_level(hero_id) * ATTACK_BONUS_PER_STAR
 
@@ -208,7 +210,7 @@ func get_hero_attack_bonus(hero_id: String) -> int:
 const STARTING_HEROES := ["Hero9", "Hero4", "Hero2", "Hero14", "Hero8"]
 
 func get_rebirth_threshold() -> int:
-	return int(1000 * (1.25 * (data.rebirth_count + 1)))
+	return int(500 * (2 * (data.rebirth_count + 1)))
 
 func can_rebirth() -> bool:
 	return data["currency"] >= get_rebirth_threshold()
@@ -226,10 +228,14 @@ func do_rebirth() -> bool:
 	return true
 
 
+func multiply_currency(factor: float):
+	data["currency"] *= factor
+	save_game()
+
 # -------------------------
 # SKILL WEB
 # -------------------------
-const SKILL_BRANCHES = ["attack", "hp", "tokens", "luck"]
+const SKILL_BRANCHES = ["attack", "hp", "tokens", "luck", "regen", "crit", "duplicate", "upgrade_power"]
 const SKILL_MAX_LEVEL = 5
 
 func get_skill_level(branch: String) -> int:
@@ -253,7 +259,18 @@ func buy_skill(branch: String) -> bool:
 	data["skill_points"] -= 1
 	save_game()
 	return true
+func get_skill_regen_bonus() -> int:
+	return get_skill_level("regen")
 
+func get_skill_crit_chance() -> float:
+	return get_skill_level("crit") * 0.05  # 5% per tier, max 25%
+
+func get_skill_duplicate_bonus() -> float:
+	return get_skill_level("duplicate") * 0.1  # 10% fewer copies needed per tier, max 50%
+
+func get_skill_upgrade_power_bonus() -> int:
+	return get_skill_level("upgrade_power")
+	
 func get_skill_attack_bonus() -> int:
 	return get_skill_level("attack")
 

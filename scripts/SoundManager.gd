@@ -1,15 +1,8 @@
 extends Node
-
 @onready var hover_player = AudioStreamPlayer.new()
 @onready var click_player = AudioStreamPlayer.new()
-
 var hover_sound = preload("res://sounds/hover.ogg")
 var click_sound = preload("res://sounds/click.ogg")
-
-var paper_white_texture = preload("res://picstures/white.png")
-var paper_grey_texture = preload("res://picstures/grey.png")
-var main_font = preload("res://fonts/Schoolbell-Regular.ttf")  
-
 func _ready():
 	add_child(hover_player)
 	add_child(click_player)
@@ -28,24 +21,7 @@ func play_click():
 
 
 func style_button_paper(button: Button):
-	var white_style = StyleBoxTexture.new()
-	white_style.texture = paper_white_texture
-
-	var grey_style = StyleBoxTexture.new()
-	grey_style.texture = paper_grey_texture
-
-	button.add_theme_stylebox_override("normal", white_style)
-	button.add_theme_stylebox_override("hover", grey_style)
-	button.add_theme_stylebox_override("pressed", grey_style)
-	button.add_theme_stylebox_override("focus", white_style)  # avoid default blue focus outline
-	button.add_theme_stylebox_override("disabled", grey_style)
-	button.add_theme_font_override("font", main_font)
-		
-	button.add_theme_color_override("font_color", Color.BLACK)
-	button.add_theme_color_override("font_hover_color", Color.BLACK)
-	button.add_theme_color_override("font_pressed_color", Color.BLACK)
-	button.add_theme_color_override("font_disabled_color", Color(0, 0, 0, 0.4))
-
+	button.theme_type_variation = &"PaperButton"
 
 func connect_and_style_button(button: Button):
 	button.mouse_entered.connect(play_hover)
@@ -99,7 +75,7 @@ func style_button_by_rarity(button: Button, rarity: String):
 	button.add_theme_stylebox_override("pressed", pressed_style)
 	button.add_theme_stylebox_override("focus", normal_style)
 	button.add_theme_stylebox_override("disabled", hover_style)
-	button.add_theme_font_override("font", main_font)
+
 		
 	button.add_theme_color_override("font_color", Color.WHITE)
 	button.add_theme_color_override("font_hover_color", Color.WHITE)

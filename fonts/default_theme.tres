@@ -1,0 +1,23 @@
+[gd_resource type="Theme" format=3 uid="uid://bpn3s2ju1afwr"]
+
+[ext_resource type="Texture2D" uid="uid://cpfrekiwqdcfb" path="res://picstures/grey.png" id="1_cx8l3"]
+[ext_resource type="Texture2D" uid="uid://bqbshcbakfttv" path="res://picstures/white.png" id="1_w38wm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w38wm"]
+texture = ExtResource("1_cx8l3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cx8l3"]
+texture = ExtResource("1_w38wm")
+
+[resource]
+PaperButton/base_type = &"Button"
+PaperButton/colors/font_color = Color(0.096204735, 0.09620475, 0.096204735, 1)
+PaperButton/colors/font_disabled_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/colors/font_focus_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/colors/font_hover_pressed_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/colors/font_pressed_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/colors/icon_disabled_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+PaperButton/font_sizes/font_size = 16
+PaperButton/styles/hover = SubResource("StyleBoxTexture_w38wm")
+PaperButton/styles/normal = SubResource("StyleBoxTexture_cx8l3")

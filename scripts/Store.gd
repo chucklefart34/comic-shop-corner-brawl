@@ -41,6 +41,7 @@ func update_currency_label():
 	currency_label.text = "Tokens: " + str(SaveManager.data["currency"]) \
 		+ "  (x" + str(SaveManager.data["token_multiplier"]) + " multiplier)"
 	rebirth_button.disabled = not SaveManager.can_rebirth()
+	rebirth_button.text = "Rebirth (" + str(SaveManager.get_rebirth_threshold()) + " tokens)"
 	
 func _on_rebirth_button_pressed():
 	if not SaveManager.can_rebirth():
@@ -363,10 +364,8 @@ func play_multi_pack_animation(results: Array):
 	
 func roll_rarity():
 	var luck_bonus = SaveManager.get_skill_luck_bonus()
-	var roll = randi_range(1, 100) - (luck_bonus * 3)
-	roll = max(roll, 1)
-	
-	
+	var roll = randi_range(1, 100) + (luck_bonus * 3)
+	roll = min(roll, 100)
 
 	if roll <= 60:
 		return "Common"
@@ -376,5 +375,5 @@ func roll_rarity():
 		return "Rare"
 	elif roll <= 99:
 		return "Epic"
-	elif roll <= 100:
+	else:
 		return "Legendary"

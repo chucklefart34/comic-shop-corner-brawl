@@ -61,9 +61,9 @@ text = "Tokens: "
 
 [node name="RebirthButton" type="Button" parent="." unique_id=645556760]
 layout_mode = 0
-offset_left = 1145.0001
+offset_left = 765.99994
 offset_top = 659.0
-offset_right = 1211.0001
+offset_right = 831.99994
 offset_bottom = 690.0
 scale = Vector2(1.7752744, 1.3467249)
 text = "Rebirth"

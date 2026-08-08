@@ -10,7 +10,7 @@ func _ready():
 	randomize()
 	upgrades = [
 		{"name":"Heal 10 HP", "type":"heal"},
-		{"name":"+1 Damage (Random Hero)", "type":"buff_random"},
+		{"name":"+Damage (Random Hero)", "type":"buff_random"},
 		{"name":"Remove Random Card", "type":"remove_card"},
 		{"name":"Increase Max HP +5", "type":"max_hp"},
 		{"name":"Add Random Card", "type":"add_card"}
@@ -44,9 +44,9 @@ func pick_upgrade(index: int):
 				var hero_id = RunData.deck[idx]
 				if not RunData.hero_upgrades.has(hero_id):
 					RunData.hero_upgrades[hero_id] = {}
+				var bonus_amount = 1 + SaveManager.get_skill_upgrade_power_bonus()
 				RunData.hero_upgrades[hero_id]["attack_bonus"] = \
-					RunData.hero_upgrades[hero_id].get("attack_bonus", 0) + 1
-					
+					RunData.hero_upgrades[hero_id].get("attack_bonus", 0) + bonus_amount
 		"remove_card":
 			if RunData.deck.size() > 0:
 				var idx = randi() % RunData.deck.size()

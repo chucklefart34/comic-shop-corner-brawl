@@ -2,20 +2,29 @@ extends Control
 
 const BRANCH_INFO = {
 	"attack": {"label": "Attack", "color": Color(1, 0.4, 0.4), "angle": -90},
+	"crit": {"label": "Crit", "color": Color(1.0, 0.7, 0.2), "angle": -45},
 	"hp": {"label": "Vitality", "color": Color(0.4, 1, 0.4), "angle": 0},
-	"tokens": {"label": "Wealth", "color": Color(1, 0.85, 0.3), "angle": 90},
-	"luck": {"label": "Luck", "color": Color(0.6, 0.4, 1), "angle": 180}
+	"regen": {"label": "Regen", "color": Color(0.6, 1.0, 0.7), "angle": 45},
+	"tokens": {"label": "Greed", "color": Color(1, 0.85, 0.3), "angle": 90},
+	"upgrade_power": {"label": "Mastery", "color": Color(0.5, 0.7, 1.0), "angle": 135},
+	"luck": {"label": "Luck", "color": Color(0.6, 0.4, 1), "angle": 180},
+	"duplicate": {"label": "Fortune", "color": Color(0.3, 0.9, 0.9), "angle": 225}
 }
 
-const TIERS = 5
-const NODE_RADIUS = 30
-const TIER_SPACING = 90
 const BRANCH_DESCRIPTIONS = {
 	"attack": "+1 flat damage per attack",
 	"hp": "+5 max HP",
 	"tokens": "+10% tokens earned",
-	"luck": "+3% better pack odds"
+	"luck": "+3% better pack odds",
+	"crit": "+5% chance to deal double damage",
+	"regen": "+1 HP healed at the start of your turn",
+	"duplicate": "-10% duplicates needed for star bonuses",
+	"upgrade_power": "+1 to the '+Damage' upgrade's bonus"
 }
+
+const TIERS = 10
+const NODE_RADIUS = 30
+const TIER_SPACING = 90
 
 @onready var token_label = $TokenLabel
 @onready var return_button = $ReturnButton
@@ -150,19 +159,37 @@ func make_node_button(label_text: String, pos: Vector2, color: Color, tier: int,
 
 	return btn
 
+var pending_purchase_branch = ""
+var pending_purchase_tier = -1
+ 
 func show_node_info(branch: String, tier: int):
 	var info = BRANCH_INFO[branch]
 	var level = SaveManager.get_skill_level(branch)
 	var desc = BRANCH_DESCRIPTIONS[branch]
-
+ 
 	if tier < level:
+		pending_purchase_branch = ""
+		pending_purchase_tier = -1
 		info_label.text = info["label"] + " Tier " + str(tier + 1) + " — Owned (" + desc + ")"
+ 
 	elif tier == level:
-		info_label.text = info["label"] + " Tier " + str(tier + 1) + " — " + desc + "  [Tap again to unlock]"
-		try_buy(branch, tier)
+		if pending_purchase_branch == branch and pending_purchase_tier == tier:
+			# second tap on the same node — confirm the purchase
+			try_buy(branch, tier)
+			pending_purchase_branch = ""
+			pending_purchase_tier = -1
+		else:
+			# first tap — just preview, don't spend yet
+			pending_purchase_branch = branch
+			pending_purchase_tier = tier
+			info_label.text = info["label"] + " Tier " + str(tier + 1) + " — " + desc + "  [Tap again to unlock]"
+ 
 	else:
+		pending_purchase_branch = ""
+		pending_purchase_tier = -1
 		info_label.text = info["label"] + " Tier " + str(tier + 1) + " — Locked (" + desc + "). Unlock Tier " + str(level + 1) + " first."
-
+ 
+ 
 func try_buy(branch: String, _tier: int):
 	if SaveManager.buy_skill(branch):
 		build_tree()

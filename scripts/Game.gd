@@ -196,10 +196,21 @@ func execute_attack():
 
 	var dmg = base_damage + bonus
 
-	await show_dice_animation(rolls, dmg, hero["display_name"] + "'s Attack!", Color(0.212, 0.544, 0.512, 1.0))
+	var is_crit = randf() < SaveManager.get_skill_crit_chance()
+	if is_crit:
+		dmg *= 2
 
+	var attack_title = hero["display_name"] + "'s Attack!"
+	var attack_color = Color(0.212, 0.544, 0.512, 1.0)
+	if is_crit:
+		attack_title = "CRITICAL HIT! " + hero["display_name"]
+		attack_color = Color(1.0, 0.85, 0.2, 1.0)
+
+	await show_dice_animation(rolls, dmg, attack_title, attack_color)
+	
 	enemy_hp -= dmg
 	info_label.text = hero["display_name"] + " dealt " + str(dmg)
+	enemy_hp_label.text = "Enemy HP: " + str(enemy_hp)
 	
 	# WIN CHECK
 	if enemy_hp <= 0:
@@ -327,6 +338,10 @@ func enemy_turn():
 
 func start_player_turn():
 	player_can_act = true
+
+	var heal_amount = SaveManager.get_skill_regen_bonus()
+	if heal_amount > 0:
+		RunData.player_hp = min(RunData.player_hp + heal_amount, RunData.player_max_hp)
 
 	for btn in hero_buttons:
 		btn.modulate = Color(1, 1, 1)

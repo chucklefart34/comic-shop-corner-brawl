@@ -7,6 +7,7 @@ extends Control
 @onready var help_panel = $HelpPanel
 @onready var help_text = $HelpPanel/HelpText
 @onready var close_help_button = $HelpPanel/CloseHelpButton
+@onready var multi_button = $HelpPanel/MultiButton
 
 func _ready():
 	SaveManager.load_game()
@@ -14,6 +15,7 @@ func _ready():
 		RunData.start_new_run()
 		get_tree().change_scene_to_file("res://scenes/Game.tscn")
 		
+	
 )
 	store_button.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/Store.tscn")
@@ -25,6 +27,12 @@ func _ready():
 	help_button.pressed.connect(_on_help_button_pressed)
 	close_help_button.pressed.connect(_on_close_help_button_pressed)
 
+
+	multi_button.pressed.connect(func():
+		SaveManager.multiply_currency(10)
+		
+		
+	)
 	connect_button_sounds(self)
 
 func connect_button_sounds(node: Node):
